@@ -12,10 +12,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--cost
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
-	local tc=g:GetFirst()
-	while tc do
-		Duel.SendToDeck(g,nil,-2,REASON_EFFECT)
-		tc=g:GetNext()
-	end
+	local sdg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND,0,nil,TYPE_MONSTER)
+	Duel.SendtoDeck(sdg,nil,-2,REASON_RULE)
 end
