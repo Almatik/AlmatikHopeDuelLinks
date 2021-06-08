@@ -19,5 +19,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		local code=Duel.CreateToken(tp,32274490)
 		Duel.MoveToField(code,tp,tp,LOCATION_GRAVE,POS_FACEUP,true)
 		n=n-1
-	until n=0
+	until n==0
 end
