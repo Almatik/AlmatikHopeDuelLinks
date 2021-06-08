@@ -2,7 +2,7 @@
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
+	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
@@ -13,6 +13,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	local code=CreateToken(tp,75782277)
+	local code=Duel.CreateToken(tp,75782277)
 	MoveToField(code,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 end
