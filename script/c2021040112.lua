@@ -17,7 +17,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(sdg,nil,-2,REASON_RULE)
 	repeat 
 		local code=Duel.CreateToken(tp,32274490)
-		Duel.MoveToField(code,tp,tp,LOCATION_GRAVE,POS_FACEUP,true)
+		Duel.SendtoGrave(code,REASON_RULE)
 		n=n-1
 	until n==0
 end
