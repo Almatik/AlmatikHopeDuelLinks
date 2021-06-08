@@ -16,7 +16,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--cost
 	Duel.PayLPCost(tp,3000)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(s.filter,tp,0,LOCATION_GRAVE,nil)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE):Filter(s.filter,nil)
 	local n=g:GetCount()
 	Duel.SendToDeck(g,nil,-2,REASON_EFFECT)
 	local total=0
