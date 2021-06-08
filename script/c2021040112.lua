@@ -14,15 +14,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	--cost
-	Duel.PayLPCost(tp,3000)
 	local c=e:GetHandler()
-	local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE):Filter(s.filter,nil)
-	local n=g:GetCount()
+	local g=Duel.GetFieldGroup(tp,LOCATION_GRAVE,0)
 	Duel.SendToDeck(g,nil,-2,REASON_EFFECT)
-	local total=0
-	repeat
-		code=Duel.CreateToken(tp,32274490)
-		Duel.MoveToField(code,tp,1-tp,LOCATION_GRAVE,POS_FACEUP,true)
-		total=total+1
-	until total==n
 end
