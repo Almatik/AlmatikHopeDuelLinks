@@ -14,5 +14,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Field Spell
 	local c=e:GetHandler()
 	local code=Duel.CreateToken(tp,75782277)
-	MoveToField(code,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
+	Duel.MoveToField(code,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 end
