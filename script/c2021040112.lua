@@ -7,6 +7,9 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return aux.CanActivateSkill(tp)
 end
+function s.filter(c)
+	return c:IsAbleToRemove() and c:IsType(TYPE_MONSTER)
+end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
