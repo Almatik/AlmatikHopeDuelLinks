@@ -12,11 +12,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--cost
 	local c=e:GetHandler()
-	local sdg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND,0,nil,TYPE_MONSTER)
+	local sdg=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)
 	local n=sdg:GetCount()
 	Duel.SendtoDeck(sdg,nil,-2,REASON_RULE)
 	repeat 
-		local code=Duel.CreateToken(tp,32274490)
+		local code=Duel.CreateToken(1-tp,32274490)
 		Duel.SendtoGrave(code,REASON_RULE)
 		n=n-1
 	until n==0
