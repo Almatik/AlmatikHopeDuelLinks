@@ -5,17 +5,18 @@ function s.initial_effect(c)
 	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+	--condition
+	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer()
+end
+function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--random
 	if Duel.GetLP(tp)>4000 then
 		local lp=4000
 	else
 		local lp=Duel.GetLP(tp)
 	end
-	n=Duel.GetRandomNumber(1,4000)
-	--condition
-	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer() and lp>=n
-end
-function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+	local n=Duel.GetRandomNumber(1,4000)
+	if lp>n then return end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local c=e:GetHandler()
