@@ -16,7 +16,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		local lp=Duel.GetLP(tp)
 	end
 	local n=Duel.GetRandomNumber(1,4000)
-	if lp>n then return end
+	Duel.Damage(tp,n,REASON_EFFEC)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local c=e:GetHandler()
