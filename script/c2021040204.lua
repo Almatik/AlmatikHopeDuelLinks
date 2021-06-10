@@ -11,8 +11,9 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local lp=Duel.GetLP(tp)
 	end
+	n=Duel.GetRandomNumber(1,4000)
 	--condition
-	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer() and lp>=Duel.GetRandomNumber(1,4000)
+	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer() and lp>=n
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
