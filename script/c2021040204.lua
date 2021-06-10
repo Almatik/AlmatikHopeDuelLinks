@@ -11,7 +11,8 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local lp=Duel.GetLP(tp)
 	end
-	local n=math.random(1,4000)
+	math.randomseed(os.clock())
+	local n=math.random(4000)
 	--condition
 	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer() and lp>n
 end
