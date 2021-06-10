@@ -10,13 +10,12 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--random
-	if Duel.GetLP(tp)>4000 then
-		local lp=4000
-	else
+	local lp=4000
+	if Duel.GetLP(tp)<=4000 then
 		local lp=Duel.GetLP(tp)
 	end
 	local n=Duel.GetRandomNumber(1,4000)
-	Duel.Damage(tp,n,REASON_EFFECT)
+	if n>lp then return end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local c=e:GetHandler()
