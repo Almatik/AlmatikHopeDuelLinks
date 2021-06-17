@@ -1,12 +1,11 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
 	--Activate
-	aux.AddSkillProcedure(c,2,false,nil,nil)
+	aux.AddSkillProcedure(c,1,false,nil,nil)
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_DRAW)
 	e1:SetCountLimit(1)
 	e1:SetRange(0x5f)
