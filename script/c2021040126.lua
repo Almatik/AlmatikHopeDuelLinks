@@ -7,7 +7,7 @@ function s.initial_effect(c)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return aux.DLCanIgnition(tp) and Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,3,nil,TYPE_SPELL)
+	return aux.DLCanIgnition(tp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
