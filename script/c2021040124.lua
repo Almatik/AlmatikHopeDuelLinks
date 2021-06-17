@@ -1,7 +1,6 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),1994|(2<<32))
 	--Activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -37,6 +36,7 @@ end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
+	Duel.Hint(HINT_SKILL_COVER,tp,1994|(1994<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local code=eg:GetFirst():GetCode()
 	local tc=Duel.CreateToken(tp,code)
