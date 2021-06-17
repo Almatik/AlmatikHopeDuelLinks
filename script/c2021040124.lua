@@ -22,6 +22,7 @@ function s.initial_effect(c)
 	end)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_SKILL_COVER,tp,1994|(1994<<32))
 	if not s[tp] then s[tp]=Duel.GetLP(tp) end
 	if s[tp]>Duel.GetLP(tp) then
 		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
@@ -36,7 +37,6 @@ end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
-	Duel.Hint(HINT_SKILL_COVER,tp,1994|(1994<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local code=eg:GetFirst():GetCode()
 	local tc=Duel.CreateToken(tp,code)
