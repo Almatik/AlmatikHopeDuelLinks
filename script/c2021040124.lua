@@ -1,8 +1,7 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	local coverid=1994
-	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid|(coverid<<32))
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),1994|(2<<32))
 	--Activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
