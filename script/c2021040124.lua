@@ -32,8 +32,8 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
-	Duel.Hint(HINT_SKILL_FLIP,tp,1994|(1<<32))
-	Duel.Hint(HINT_CARD,tp,id)
+	Duel.Hint(HINT_SKILL_FLIP,tp,id(1<<32))
+	Duel.Hint(HINT_CARD,tp,1994)
 	local c=e:GetHandler()
 	local code=eg:GetFirst():GetCode()
 	local tc=Duel.CreateToken(tp,code)
