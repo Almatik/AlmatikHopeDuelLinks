@@ -33,7 +33,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
-	local tc=Duel.GetFirstMatchingCard(Card.IsCode,tp,LOCATION_DECK,0,nil,eg:GetCode())
+	local tc=Duel.GetFirstMatchingCard(Card.IsCode,tp,LOCATION_DECK,0,nil,eg:GetFirst():GetCode())
 	Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 end
