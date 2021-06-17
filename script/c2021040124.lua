@@ -1,7 +1,6 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	c:Cover(1994)
 	--Activate
 	aux.AddVrainsSkillProcedure(c,s.flipcon,s.flipop,EVENT_DRAW)
 	aux.GlobalCheck(s,function()
@@ -29,6 +28,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetTurnPlayer()==tp
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():Cover(1994)
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
