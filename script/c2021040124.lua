@@ -8,7 +8,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.SetSkillOp(nil,s.flipcon,s.flipop,1,EVENT_DRAW))
+	e1:SetOperation(Auxiliary.SetSkillOp(1,s.flipcon,s.flipop,1,EVENT_DRAW))
 	c:RegisterEffect(e1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
