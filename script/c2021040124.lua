@@ -2,7 +2,6 @@
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),1994|(1994<<32))
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -35,8 +34,10 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetTurnPlayer()==tp
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),1994|(1994<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local code=eg:GetFirst():GetCode()
 	local tc=Duel.CreateToken(tp,code)
