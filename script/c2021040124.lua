@@ -31,9 +31,6 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 		s[tp]=Duel.GetLP(tp)
 	end
 end
-function s.filter(c)
-	return c:IsAbleToDeck()
-end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return s[2+tp]>=0
