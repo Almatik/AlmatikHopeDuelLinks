@@ -27,7 +27,7 @@ function s.filter(c)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return s[2+tp]>=0
+	return s[2+tp]>=2000
 		and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW and Duel.GetTurnPlayer()==tp
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
