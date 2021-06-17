@@ -1,15 +1,13 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	Duel.Hint(HINT_SKILL_COVER,0,1994|(1994<<32))
-	Duel.Hint(HINT_CARD,tp,id)
 	--Activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.SetSkillOp(1,s.flipcon,s.flipop,1,EVENT_DRAW))
+	e1:SetOperation(s.duellinks)
 	c:RegisterEffect(e1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
@@ -29,6 +27,11 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
 		s[tp]=Duel.GetLP(tp)
 	end
+end
+function s.duellinks(e,tp,eg,ep,ev,re,r,rp)
+   Auxiliary.SetSkillOp(1,s.flipcon,s.flipop,1,EVENT_DRAW)
+	Duel.Hint(HINT_SKILL_COVER,0,1994|(1994<<32))
+	Duel.Hint(HINT_CARD,tp,id)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
