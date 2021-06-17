@@ -9,6 +9,7 @@ function s.initial_effect(c)
 	e1:SetRange(0x5f)
 	e1:SetOperation(Auxiliary.SetSkillOp(2,s.flipcon,s.flipop,1,EVENT_DRAW))
 	c:RegisterEffect(e1)
+	c:Cover(199420001)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
