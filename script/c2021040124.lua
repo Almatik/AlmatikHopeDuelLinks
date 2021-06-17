@@ -1,7 +1,7 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	Duel.Hint(HINT_SKILL_COVER,tp,1994|(1994<<32))
+	Duel.Hint(HINT_SKILL_COVER,1,1994|(1994<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	--Activate
 	local e1=Effect.CreateEffect(c) 
