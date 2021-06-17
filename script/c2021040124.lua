@@ -9,7 +9,6 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_DRAW)
 	e1:SetCountLimit(1)
 	e1:SetRange(0x5f)
-	e1:SetCondition(s.flipcon)
 	e1:SetOperation(s.flipop)
 	c:RegisterEffect(e1)
 	aux.GlobalCheck(s,function()
@@ -33,8 +32,8 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return s[2+tp]>=0
-		and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW and Duel.GetTurnPlayer()==tp
+	return s[2+tp]>=0 and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW
+		and Duel.GetTurnPlayer()==tp
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
