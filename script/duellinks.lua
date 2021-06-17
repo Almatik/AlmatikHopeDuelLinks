@@ -51,7 +51,7 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 		--generate the skill in the "skill zone"
-		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid|(coverid<<32))
+		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
