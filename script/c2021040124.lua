@@ -1,9 +1,9 @@
 --Extra Extra
-Duel.LoadScript("c20201040105.lua")
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	DuelLinks.AddSkillProcedure(c,1994,EVENT_DRAW,s.flipcon,s.flipop,1)
+	aux.DLProcedure(c,1994,EVENT_DRAW,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
