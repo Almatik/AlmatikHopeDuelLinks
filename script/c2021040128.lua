@@ -18,5 +18,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local tc=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_TRAP):RandomSelect(tp,1)
-	Duel.SendtoHand(tc,nil,REASON_EFFECT)
+	if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
+		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
+		if #g>0 then Duel.SendtoDeck(g,nil,2,REASON_EFFECT) end
+	end
 end
