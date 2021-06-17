@@ -2,7 +2,6 @@
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	Duel.Hint(HINT_SKILL_COVER,c:GetOwnerPlayer(),1994|(1<<32))
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
