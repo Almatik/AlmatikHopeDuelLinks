@@ -37,5 +37,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local code=eg:GetFirst():GetCode()
 	local tc=Duel.CreateToken(tp,code)
-	SendtoHand(tc,tp,REASON_EFFECT)
+	Duel.SendtoHand(tc,nil,REASON_EFFECT)
 end
