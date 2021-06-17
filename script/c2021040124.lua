@@ -37,12 +37,11 @@ function s.filter(c)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return s[2+tp]>=2000
+	return s[2+tp]>=0
 		and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW and Duel.GetTurnPlayer()==tp
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
-	Duel.Hint(HINT_SKILL_COVER,tp,1994)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local c=e:GetHandler()
