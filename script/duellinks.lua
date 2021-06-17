@@ -19,7 +19,7 @@ end
 -- skillcon: condition to activate the skill (function)
 -- skillop: operation related to the skill activation (function)
 -- countlimit: number of times you can use this skill
-function Auxiliary.DuelLinks(c,coverid,setcode,skillcon,skillop,countlimit)
+function Auxiliary.DuelLinksSkill(c,coverid,setcode,skillcon,skillop,countlimit)
 	if event==nil then local event=EVENT_FREE_CHAIN end
 	--activate
 	local e1=Effect.CreateEffect(c) 
