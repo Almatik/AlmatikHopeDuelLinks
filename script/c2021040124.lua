@@ -1,7 +1,7 @@
 --Extra Extra
 local s,id=GetID()
 function s.initial_effect(c)
-	c:Cover(1994)
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),1994)
 	--Activate
 	aux.AddVrainsSkillProcedure(c,s.flipcon,s.flipop,EVENT_DRAW)
 	aux.GlobalCheck(s,function()
