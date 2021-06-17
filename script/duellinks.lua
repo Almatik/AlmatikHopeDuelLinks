@@ -12,6 +12,7 @@ end
 function Auxiliary.DLCanIgnition(tp)
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
+
 -- Proc for basic skill
 -- c: the card (card)
 -- coverNum: the Number of the cover (int)
