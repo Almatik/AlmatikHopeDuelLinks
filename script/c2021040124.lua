@@ -2,7 +2,7 @@
 local s,id=GetID()
 function s.initial_effect(c)
 	--skill
-	aux.AddSkillProcedure(c,1,false,s.flipcon,s.flipop,EVENT_DRAW)
+	aux.AddVrainsSkillProcedure(c,s.flipcon,s.flipop,EVENT_DRAW)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
