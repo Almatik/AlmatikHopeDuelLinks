@@ -13,7 +13,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
-	local tc=Duel.GetFirstMatchingCard(Card.IsType,tp,LOCATION_DECK,0,nil,TYPE_TRAP)
-	Duel.SendtoHand(tc,nil,REASON_EFFECT)
-	Duel.SendtoGrave(tc,REASON_EFFECT)
+	local tc1=Duel.GetFieldGroup(tp,LOCATION_GRAVE,0):Filter(Card.IsType,nil,tp,TYPE_TRAP):RandomSelect(tp,1)
+	Duel.SendtoHand(tc1,nil,REASON_EFFECT)
+	local tc2=Duel.GetFieldGroup(tp,LOCATION_GRAVE,0):Filter(Card.IsType,nil,tp,TYPE_TRAP):RandomSelect(tp,1)
+	Duel.SendtoDeck(tc2,nil,0,REASON_EFFECT)
 end
