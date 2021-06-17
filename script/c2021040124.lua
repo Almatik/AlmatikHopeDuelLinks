@@ -1,5 +1,5 @@
 --Extra Extra
-Duel.LoadScript("duellinks.lua")
+Duel.LoadScript("c20201040105.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
