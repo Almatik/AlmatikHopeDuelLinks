@@ -26,5 +26,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.MoveToField(Duel.CreateToken(tp,26439287),tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 		end
 		n=n-1
-	until n=0
+	until n==0
 end
