@@ -20,11 +20,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	--Field Spell
 	local c=e:GetHandler()
-	local code=Duel.CreateToken(tp,26439287)
 	local n=math.floor(4000-Duel.GetLP(tp))
 	repeat
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then
-			Duel.MoveToField(code,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
+			Duel.MoveToField(Duel.CreateToken(tp,26439287),tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 		end
 		n=n-1
 	until n=0
