@@ -36,6 +36,7 @@ function Auxiliary.DuelLinksSkill(c,coverid,skillcon,skillop,countlimit,skilltyp
 		e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_STARTUP)
+		e2:SetCountLimit(countlimit)
 		e2:SetRange(0x5f)
 		e2:SetOperation(skillcon)
 		e2:SetOperation(skillop)
