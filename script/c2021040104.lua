@@ -16,8 +16,7 @@ end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	--condition
-	return Duel.GetTurnCount()==1
-		and g:Filter(Card.IsType,nil,TYPE_MONSTER)>5
+	return g:Filter(Card.IsType,nil,TYPE_MONSTER)>5
 		and g:Filter(Card.IsType,nil,TYPE_SPELL)>5
 		and g:Filter(Card.IsType,nil,TYPE_TRAP)>5
 end
