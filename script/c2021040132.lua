@@ -39,7 +39,7 @@ end
 function s.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return c:IsLocation(LOCATION_GRAVE)
 end
-function s.EPop(e,tp,eg,ep,ev,re,r,rp)
+function s.EPcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 end
 function s.EPop(e,tp,eg,ep,ev,re,r,rp)
