@@ -1,4 +1,4 @@
---Balance (2020)
+--Balance (2017)
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
