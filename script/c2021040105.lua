@@ -3,7 +3,6 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksStartUp(c,2021040100,nil,nil,nil,nil)
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -13,6 +12,7 @@ function s.initial_effect(c)
 	e1:SetCondition(s.flipcon)
 	e1:SetOperation(s.flipop)
 	c:RegisterEffect(e1)
+	aux.DuelLinksStartUp(c,2021040100,nil,nil,nil,nil)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
