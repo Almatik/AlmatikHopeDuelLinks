@@ -21,13 +21,17 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Field Spell
 	local c=e:GetHandler()
 	local code=Duel.CreateToken(tp,26439287)
-	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then
+	local n=math.floor(4000-Duel.GetLP(tp))
+	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+		and n>=1 then
 		Duel.MoveToField(code,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 	end
-	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then
+	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+		and n>=2 then
 		Duel.MoveToField(code,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 	end
-	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then
+	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+		and n>=3 then
 		Duel.MoveToField(code,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 	end
 end
