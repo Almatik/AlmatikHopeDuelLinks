@@ -39,7 +39,7 @@ function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop,countlimit)
 	e2:SetOperation(skillop)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.DuelLinksPreDraw(c,coverid,skillcon,skillop,countlimit,skilltype,setcode)
+function Auxiliary.DuelLinksPreDraw(c,coverid,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -48,7 +48,7 @@ function Auxiliary.DuelLinksPreDraw(c,coverid,skillcon,skillop,countlimit,skillt
 	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,EVENT_PREDRAW))
 	c:RegisterEffect(e1)
 end
-function Auxiliary.DuelLinksIgnition(c,coverid,skillcon,skillop,countlimit,skilltype,setcode)
+function Auxiliary.DuelLinksIgnition(c,coverid,skillcon,skillop,countlimit)
 	--activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -56,6 +56,16 @@ function Auxiliary.DuelLinksIgnition(c,coverid,skillcon,skillop,countlimit,skill
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
 	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,EVENT_FREE_CHAIN))
+	c:RegisterEffect(e1)
+end
+function Auxiliary.DuelLinksTrigger(c,coverid,skillcon,skillop,countlimit,setcode)
+	--activate
+	local e1=Effect.CreateEffect(c) 
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_STARTUP)
+	e1:SetRange(0x5f)
+	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,setcode))
 	c:RegisterEffect(e1)
 end
 
