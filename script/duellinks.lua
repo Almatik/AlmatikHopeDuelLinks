@@ -52,6 +52,24 @@ function Auxiliary.DuelLinksSkill(c,coverid,setcode,skillcon,skillop,countlimit,
 		e2:SetOperation(skillop)
 		c:RegisterEffect(e2)
 	end
+	if skilltype==SKILL_PREDRAW then
+		local e1=Effect.CreateEffect(c) 
+		e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_STARTUP)
+		e1:SetRange(0x5f)
+		e1:SetOperation(Auxiliary.DLStartUp(coverid))
+		c:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetCode(EVENT_PREDRAW)
+		e2:SetCountLimit(countlimit)
+		e2:SetRange(0x5f)
+		e2:SetCondition(skillcon)
+		e2:SetOperation(skillop)
+		c:RegisterEffect(e2)
+	end
 end
 
 -- Skill Ignition

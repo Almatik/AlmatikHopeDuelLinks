@@ -1,8 +1,9 @@
 --Restart (2020)
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
+	aux.DuelLinksSkill(c,2021040100,nil,s.flipcon,s.flipop,1,SKILL_PREDRAW)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND+LOCATION_DECK,0)
