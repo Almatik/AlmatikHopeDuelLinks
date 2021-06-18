@@ -85,14 +85,6 @@ function Auxiliary.DLStartup(coverid,skillcon,skillop)
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
 		end
-		if skillop~=nil then
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e1:SetCode(EVENT_STARTUP)
-			e1:SetRange(0x5f)
-			e1:SetCondition(skillcon)
-			e1:SetOperation(skillop)
-			c:RegisterEffect(e1)
-		end
+		if skillcon==true then return skillop end
 	end
 end
