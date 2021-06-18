@@ -1,7 +1,8 @@
 --Three-Star Demotion
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	aux.AddSkillProcedure(c,1,false,s.flipcon,s.flipop,1)
+	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
