@@ -1,8 +1,9 @@
 --Switcheroo (2016)
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
-	aux.AddSkillProcedure(c,id,false,s.flipcon,s.flipop,1)
+	--Activate
+	aux.DuelLinksSkill(c,2021040100,EVENT_FREE_CHAIN,s.flipcon,s.flipop,1)
 end
 function s.filter(c)
 	return c:IsAbleToDeck()
@@ -26,6 +27,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
+		if Duel.GetFlagEffect(ep,id)>1 then return end
 		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 		s[2+tp]=0
 	end
