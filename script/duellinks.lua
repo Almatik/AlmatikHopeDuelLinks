@@ -60,20 +60,27 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 	end
 end
 
-
 -- StartUp
 function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop)
-	if event==nil then local event=EVENT_FREE_CHAIN end
 	--activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop))
+	e1:SetOperation(Auxiliary.DLStartUp(coverid))
 	c:RegisterEffect(e1)
+    local e1=Effect.CreateEffect(c)
+    e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+    e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+    e1:SetCode(EVENT_STARTUP)
+    e1:SetCountLimit(1)
+    e1:SetRange(0x5f)
+    e1:SetCondition(skillcon)
+    e1:SetOperation(skillop)
+    c:RegisterEffect(e1)
 end
-function Auxiliary.DLStartup(coverid,skillcon,skillop)
+function Auxiliary.DLSkillOp(coverid)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
 		Duel.DisableShuffleCheck(true)
@@ -85,6 +92,5 @@ function Auxiliary.DLStartup(coverid,skillcon,skillop)
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
 		end
-		if skillcon==true then return skillop end
 	end
 end
