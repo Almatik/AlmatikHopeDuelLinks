@@ -24,6 +24,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if #g>0 and Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 then
 		Duel.ShuffleDeck(tp)
-		
+		local tc=Duel.SelectTarget(tp,Card.IsFacedown,tp,0,LOCATION_SZONE,1,1,nil)
+		Duel.GetControl(tc,tp)
 	end
 end
