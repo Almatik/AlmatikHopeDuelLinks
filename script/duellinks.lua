@@ -60,3 +60,26 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 		e:Reset()
 	end
 end
+
+-- Proc on Startup with custom operation
+
+function Auxiliary.DLStartUp(c,coverid,skillcon,skillop)
+	Duel.DisableShuffleCheck(true)
+	Duel.SendtoDeck(c,tp,-2,REASON_RULE)
+	--generate the skill in the "skill zone"
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
+	Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
+	--send to limbo then draw 1 if the skill was in the hand
+	if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
+		Duel.Draw(p,1,REASON_RULE)
+	end
+	--activate
+	local e1=Effect.CreateEffect(c) 
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_STARTUP)
+	e1:SetRange(0x5f)
+	e1:SetCondition(skillcon)
+	e1:SetOperation(skillop)
+	c:RegisterEffect(e1)
+end
