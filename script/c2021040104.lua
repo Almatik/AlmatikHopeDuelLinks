@@ -9,13 +9,14 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetCountLimit(1)
 	e1:SetRange(0x5f)
+	e1:SetCondition(s.flipcon)
 	e1:SetOperation(s.flipop)
 	c:RegisterEffect(e1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	--condition
-	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
+	return Duel.GetTurnCount()==1
 		and g:Filter(Card.IsType,nil,TYPE_MONSTER)>5
 		and g:Filter(Card.IsType,nil,TYPE_SPELL)>5
 		and g:Filter(Card.IsType,nil,TYPE_TRAP)>5
