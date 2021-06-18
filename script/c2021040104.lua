@@ -16,9 +16,9 @@ end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	--condition
-	return g:Filter(Card.IsType,nil,TYPE_MONSTER)>5
-		and g:Filter(Card.IsType,nil,TYPE_SPELL)>5
-		and g:Filter(Card.IsType,nil,TYPE_TRAP)>5
+	return g:Filter(Card.IsType,nil,TYPE_MONSTER):GetCount()>5
+		and g:Filter(Card.IsType,nil,TYPE_SPELL):GetCount()>>5
+		and g:Filter(Card.IsType,nil,TYPE_TRAP):GetCount()>>5
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
