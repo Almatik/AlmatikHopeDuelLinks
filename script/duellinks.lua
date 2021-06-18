@@ -20,20 +20,40 @@ end
 -- skillcon: condition to activate the skill (function)
 -- skillop: operation related to the skill activation (function)
 -- countlimit: number of times you can use this skill
-function Auxiliary.DuelLinksSkill(c,coverid,setcode,skillcon,skillop,countlimit)
-	if event==nil then local event=EVENT_FREE_CHAIN end
-	--activate
-	local e1=Effect.CreateEffect(c) 
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_STARTUP)
-	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit))
-	c:RegisterEffect(e1)
+function Auxiliary.DuelLinksSkill(c,coverid,setcode,skillcon,skillop,countlimit,skilltype)
+	if setcode==nil then local setcode=EVENT_FREE_CHAIN end
+	if skilltype==nil then skilltype=SKILL_IGNITION end
+	if skilltype==SKILL_IGNITION then
+		--activate
+		local e1=Effect.CreateEffect(c) 
+		e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_STARTUP)
+		e1:SetRange(0x5f)
+		e1:SetOperation(Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit))
+		c:RegisterEffect(e1)
+	end
+	if skilltype==SKILL_STARTUP then
+		local e1=Effect.CreateEffect(c) 
+		e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_STARTUP)
+		e1:SetRange(0x5f)
+		e1:SetOperation(Auxiliary.DLStartUp(coverid))
+		c:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetCode(EVENT_STARTUP)
+		e2:SetCountLimit(countlimit)
+		e2:SetRange(0x5f)
+		e2:SetCondition(skillcon)
+		e2:SetOperation(skillop)
+		c:RegisterEffect(e2)
+	end
 end
 
--- Duel.Hint(HINT_SKILL_COVER,1,coverID|(BackEntryID<<32))
--- Duel.Hint(HINT_SKILL,1,FrontID)
+-- Skill Ignition
 function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
@@ -60,26 +80,7 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 	end
 end
 
--- StartUp
-function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop)
-	--activate
-	local e1=Effect.CreateEffect(c) 
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_STARTUP)
-	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLStartUp(coverid))
-	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_STARTUP)
-	e2:SetCountLimit(1)
-	e2:SetRange(0x5f)
-	e2:SetCondition(skillcon)
-	e2:SetOperation(skillop)
-	c:RegisterEffect(e2)
-end
+-- Skill StartUp
 function Auxiliary.DLStartUp(coverid)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
