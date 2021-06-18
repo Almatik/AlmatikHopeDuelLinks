@@ -10,15 +10,11 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetCountLimit(1)
 	e1:SetRange(0x5f)
-	e1:SetCondition(s.flipcon)
 	e1:SetOperation(s.flipop)
 	c:RegisterEffect(e1)
 end
-function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
-	--condition
-	return
-end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetTurnCount()~=1 then return end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	--Balance
