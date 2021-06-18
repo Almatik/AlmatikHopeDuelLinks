@@ -1,8 +1,9 @@
 --Destiny Draw
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
-	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
+	--Activate
+	aux.DuelLinksPredraw(c,2021040100,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
@@ -35,7 +36,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,1,1,nil)
 	if Duel.MoveSequence(g,0)~=0 then
-		Duel.Draw(tp,1,REASON_EFFECT)
 		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 		s[2+tp]=0
 	end
