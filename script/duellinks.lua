@@ -80,7 +80,7 @@ function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop)
     e1:SetOperation(skillop)
     c:RegisterEffect(e1)
 end
-function Auxiliary.DLSkillOp(coverid)
+function Auxiliary.DLStartUp(coverid)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
 		Duel.DisableShuffleCheck(true)
