@@ -2,6 +2,8 @@ HINT_SKILL = 200
 HINT_SKILL_COVER = 201
 HINT_SKILL_FLIP  = 202
 HINT_SKILL_REMOVE = 203
+SKILL_IGNITION
+SKILL_STARTUP
 --function that return if the player (tp) can activate the skill
 function Auxiliary.DLCanStartup(tp)
 	return Duel.GetCurrentTurn()==1 and Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_DRAW
@@ -22,7 +24,8 @@ end
 -- countlimit: number of times you can use this skill
 function Auxiliary.DuelLinksSkill(c,coverid,setcode,skillcon,skillop,countlimit,skilltype)
 	if setcode==nil then local setcode=EVENT_FREE_CHAIN end
-	if skilltype==nil then skilltype=SKILL_IGNITION end
+	if coverid==nil then local coverid=c:GetCode() end
+	if skilltype==nil then local skilltype=SKILL_IGNITION end
 	if skilltype==SKILL_IGNITION then
 		--activate
 		local e1=Effect.CreateEffect(c) 
