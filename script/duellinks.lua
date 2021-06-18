@@ -80,5 +80,5 @@ function Auxiliary.DLStartUp(c,coverid,skillcon,skillop)
     e2:SetRange(0x5f)
     e2:SetCondition(skillcon)
     e2:SetOperation(skillop)
-    c:RegisterEffect(e2)
+    Duel.RegisterEffect(e2,e:GetHandlerPlayer())
 end
