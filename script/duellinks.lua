@@ -65,13 +65,14 @@ end
 
 function Auxiliary.DLStartUp(c,coverid,skillcon,skillop)
 	return function(e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 		--generate the skill in the "skill zone"
 		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--send to limbo then draw 1 if the skill was in the hand
-		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
+		if c:IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
 		end
 		--activate
@@ -82,6 +83,6 @@ function Auxiliary.DLStartUp(c,coverid,skillcon,skillop)
 		e1:SetRange(0x5f)
 		e1:SetCondition(skillcon)
 		e1:SetOperation(skillop)
-		c:RegisterEffect(e1)
+		Duel.RegisterEffect(e1,e:GetHandlerPlayer())
 	end
 end
