@@ -2,8 +2,6 @@ HINT_SKILL = 200
 HINT_SKILL_COVER = 201
 HINT_SKILL_FLIP  = 202
 HINT_SKILL_REMOVE = 203
-SKILL_IGNITION
-SKILL_STARTUP
 --function that return if the player (tp) can activate the skill
 function Auxiliary.DLCanStartup(tp)
 	return Duel.GetCurrentTurn()==1 and Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_DRAW
