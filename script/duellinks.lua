@@ -65,7 +65,7 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 	    e2:SetRange(0x5f)
 	    e2:SetCondition(skillcon)
 	    e2:SetOperation(skillop)
-	    Duel.RegisterEffect(e2,e:GetHandlerPlayer())
+	    c:RegisterEffect(e2)
 		e:Reset()
 	end
 end
