@@ -1,7 +1,9 @@
 --Beatdown
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	aux.AddSkillProcedure(c,1,false,s.flipcon,s.flipop,1)
+	--Activate
+	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
