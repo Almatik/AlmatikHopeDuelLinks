@@ -1,8 +1,9 @@
 --Dinosaur Kingdom
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop,1)
+	aux.DuelLinksStartUp(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition

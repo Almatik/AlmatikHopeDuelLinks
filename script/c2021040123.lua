@@ -1,8 +1,9 @@
 --Grit
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
-	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
+	--Activate
+	aux.DuelLinksPredraw(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition

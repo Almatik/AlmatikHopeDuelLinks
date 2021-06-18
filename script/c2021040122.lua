@@ -1,8 +1,9 @@
 --Destiny Calling
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
-	aux.AddSkillProcedure(c,id,false,s.flipcon,s.flipop,1)
+	--Activate
+	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
