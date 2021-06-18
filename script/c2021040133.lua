@@ -1,4 +1,4 @@
---Bandit 1
+--Bandit 2
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
@@ -13,8 +13,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>0 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.GetMatchingGroupCount(s.filter,tp,0,LOCATION_ONFIELD,nil)>0
-		and Duel.GetMatchingGroupCount(Card.IsAbleToDeck,tp,LOCATION_HAND,0,nil)>0
+		and Duel.GetMatchingGroupCount(s.filter,tp,0,LOCATION_ONFIELD,nil)>0>0
 		and Duel.GetLP(tp)<=1500
 end
 function s.filter(c)
@@ -26,11 +25,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Used skill flag register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
-	local c=e:GetHandler()
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
-	if #g>0 and Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 then
-		Duel.ShuffleDeck(tp)
-		local g=Duel.SelectMatchingCard(tp,s.filter,tp,0,LOCATION_SZONE,1,1,nil)
-		Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEDOWN,true)
-	end
+	local g=Duel.SelectMatchingCard(tp,s.filter,tp,0,LOCATION_SZONE,1,1,nil)
+	Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEDOWN,true)
 end
