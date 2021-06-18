@@ -37,7 +37,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function s.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:GetLocation()==LOCATION_GRAVE
+	return c:IsLocation(LOCATION_GRAVE)
 end
 function s.EPcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
