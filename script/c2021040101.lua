@@ -1,8 +1,9 @@
 --Switcheroo (2020)
+Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	--skill
-	aux.AddSkillProcedure(c,id,false,s.flipcon,s.flipop,1)
+	--Activate
+	aux.DuelLinksSkill(c,2021040100,EVENT_FREE_CHAIN,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
