@@ -3,7 +3,7 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksSkill(c,2021040100,EVENT_ADJUST,s.flipcon,s.flipop,1)
+	aux.DuelLinksSkill(c,2021040100,EVENT_STARTUP,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
