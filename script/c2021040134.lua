@@ -13,6 +13,11 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>0 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
+		and Duel.GetMatchingGroupCount(s.filter,tp,0,LOCATION_ONFIELD,nil)>0
+		and Duel.GetMatchingGroupCount(Card.IsAbleToDeck,tp,LOCATION_HAND,0,nil)>0
+end
+function s.filter(c)
+	return c:IsFacedown() and c:IsAbleToChangeControler()
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -24,7 +29,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if #g>0 and Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 then
 		Duel.ShuffleDeck(tp)
-		local tc=Duel.SelectTarget(tp,Card.IsFacedown,tp,LOCATION_SZONE,0,1,1,nil)
-		Duel.GetControl(tc,1-tp)
+		local g=Duel.SelectMatchingCard(tp,s.filter,tp,0,LOCATION_SZONE,1,1,nil)
+		Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEDOWN,true)
 	end
 end
