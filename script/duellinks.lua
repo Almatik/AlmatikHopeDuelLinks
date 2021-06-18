@@ -39,7 +39,7 @@ function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop,countlimit)
 	e2:SetOperation(skillop)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.DuelLinksPreDraw(c,coverid,skillcon,skillop,countlimit)
+function Auxiliary.DuelLinksPredraw(c,coverid,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
