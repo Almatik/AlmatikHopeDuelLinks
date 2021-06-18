@@ -37,15 +37,6 @@ end
 function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
-		Duel.DisableShuffleCheck(true)
-		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
-		--generate the skill in the "skill zone"
-		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
-		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
-		--send to limbo then draw 1 if the skill was in the hand
-		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
-			Duel.Draw(p,1,REASON_RULE)
-		end
 		if skillop~=nil then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -56,6 +47,15 @@ function Auxiliary.DLSkillOp(coverid,setcode,skillcon,skillop,countlimit)
 			e1:SetCondition(skillcon)
 			e1:SetOperation(skillop)
 			Duel.RegisterEffect(e1,e:GetHandlerPlayer())
+		end
+		Duel.DisableShuffleCheck(true)
+		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
+		--generate the skill in the "skill zone"
+		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
+		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
+		--send to limbo then draw 1 if the skill was in the hand
+		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
+			Duel.Draw(p,1,REASON_RULE)
 		end
 		e:Reset()
 	end
