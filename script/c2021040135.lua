@@ -18,7 +18,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	if Duel.GetLP(tp)<=1000 then local n=3 else local n=2 end
+	local n=2
+	if Duel.GetLP(tp)<=1000 then local n=3 end
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
