@@ -31,13 +31,13 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(s.value)
 	c:RegisterEffect(e2)
 end
-function s.con1(e)
+function s.con1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)>Duel.GetLP(1-tp)
 end
-function s.con1(e)
+function s.con2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)<Duel.GetLP(1-tp)
 end
-function s.value1(e,re,dam,r,rp,rc)
+function s.value(e,re,dam,r,rp,rc)
 	if (r&REASON_BATTLE)~=0 then
 		return dam*2
 	else
