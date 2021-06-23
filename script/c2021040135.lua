@@ -10,7 +10,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>0 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.GetLP(tp)<=3000
+		and Duel.GetLP(tp)<=2000
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -18,13 +18,13 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	local n=math.floor((4000-Duel.GetLP(tp))/1000)
+	if Duel.GetLP(tp)<=1000 then local n=3 else local n=2 end
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-			then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			local tc=Duel.CreateToken(tp,26439287)
-			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP_ATTACK,true)
 			--cannot release
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -42,6 +42,21 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetCode(EFFECT_CANNOT_BE_MATERIAL)
 			e3:SetValue(aux.cannotmatfilter(SUMMON_TYPE_SYNCHRO,SUMMON_TYPE_XYZ,SUMMON_TYPE_LINK))
 			tc:RegisterEffect(e3)
+			--special summon limit
+			local e4=Effect.CreateEffect(c)
+			e4:SetType(EFFECT_TYPE_FIELD)
+			e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+			e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+			e4:SetRange(LOCATION_MZONE)
+			e4:SetTargetRange(1,0)
+			e4:SetTarget(s.limit)
+			c:RegisterEffect(e4)
+			local e5=e4:Clone()
+			e5:SetCode(EFFECT_CANNOT_ATTACK)
+			tc:RegisterEffect(e5)
 	   end
 	until Duel.GetFlagEffect(ep,id)==n
+end
+function s.limit(e,c,tp,sumtp,sumpos)
+	return not c:IsType(TYPE_FUSION)
 end
