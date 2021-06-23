@@ -10,39 +10,20 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(s.value1)
+	e1:SetValue(s.value)
 	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EFFECT_CHANGE_DAMAGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(1,0)
-	e2:SetValue(s.value2)
+	e2:SetValue(s.value)
 	Duel.RegisterEffect(e2,tp)
 end
-function s.value1(e,tp,re,dam,r,rp,rc)
-	if (r&REASON_BATTLE)~=0 then
-		if Duel.GetLP(tp)>Duel.GetLP(1-tp) then
-			return dam*2
-		else
-			return dam
-		end
-	else
-		return dam
-	end
-end
-function s.value2(e,tp,re,dam,r,rp,rc)
-	if (r&REASON_BATTLE)~=0 then
-		if Duel.GetLP(tp)<Duel.GetLP(1-tp) then
-			return dam*2
-		else
-			return dam
-		end
-	else
-		return dam
-	end
+function s.value(e,tp,re,dam,r,rp,rc)
+	return dam*2
 end
