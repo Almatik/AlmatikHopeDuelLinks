@@ -18,7 +18,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	local n=math.floor(4000-Duel.GetLP(tp)/1000)
+	local n=math.floor((4000-Duel.GetLP(tp))/1000)
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
