@@ -19,7 +19,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Field Spell
 	local c=e:GetHandler()
 	local n=2
-	if Duel.GetLP(tp)=<1000 then local n=3 end
+	if Duel.GetLP(tp)<=1000 then local n=3 end
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
