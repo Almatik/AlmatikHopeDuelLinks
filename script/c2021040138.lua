@@ -14,6 +14,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
+	e1:SetCondition(s.con1)
 	e1:SetValue(DOUBLE_DAMAGE)
 	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(c)
@@ -21,9 +22,13 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
+	e2:SetCondition(s.con2)
 	e2:SetValue(DOUBLE_DAMAGE)
 	Duel.RegisterEffect(e2,tp)
 end
-function s.value(e,tp,re,dam,r,rp,rc)
-	return dam*2
+function s.con1(e,tp)
+	return Duel.GetLP(tp)>Duel.GetLP(1-tp)
+end
+function s.con2(e,tp)
+	return Duel.GetLP(tp)<Duel.GetLP(1-tp)
 end
