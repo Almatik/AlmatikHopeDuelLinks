@@ -26,5 +26,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			local tc=Duel.CreateToken(tp,26439287)
 			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 		end
-	until Duel.GetFlagEffect(ep,id)==3
+	until Duel.GetFlagEffect(ep,id)==n
 end
