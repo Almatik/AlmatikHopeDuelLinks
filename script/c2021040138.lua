@@ -26,9 +26,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(DOUBLE_DAMAGE)
 	Duel.RegisterEffect(e2,tp)
 end
-function s.con1(e,tp)
-	return Duel.GetLP(tp)>Duel.GetLP(1-tp)
+function s.con1(e)
+	local p=e:GetHandler():GetControler()
+	return Duel.GetLP(p)>Duel.GetLP(1-p)
 end
-function s.con2(e,tp)
-	return Duel.GetLP(tp)<Duel.GetLP(1-tp)
+function s.con2(e)
+	local p=e:GetHandler():GetControler()
+	return Duel.GetLP(p)<Duel.GetLP(1-p)
 end
