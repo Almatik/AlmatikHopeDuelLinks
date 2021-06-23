@@ -18,8 +18,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	local n=2
-	if Duel.GetLP(tp)<=1000 then local n=3 end
+	local n=math.floor((2000-Duel.GetLP(tp))/1000)+2
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
@@ -47,9 +46,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			local e4=Effect.CreateEffect(c)
 			e4:SetType(EFFECT_TYPE_FIELD)
 			e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
-			e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 			e4:SetRange(LOCATION_MZONE)
-			e4:SetTargetRange(1,0)
+			e4:SetTargetRange(LOCATION_MZONE,0)
 			e4:SetTarget(s.limit)
 			c:RegisterEffect(e4)
 			local e5=e4:Clone()
