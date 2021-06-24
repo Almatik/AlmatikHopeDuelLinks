@@ -5,11 +5,11 @@ function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
-function s.tgfilter(c,tp)
+function s.filter1(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and c:IsAbleToDeck()
-		and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
+		and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
 end
-function s.thfilter(c,att)
+function s.filter2(c,att)
 	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and not c:IsAttribute(att)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
@@ -17,7 +17,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_HAND,0,1,nil,tp)
+		and Duel.IsExistingMatchingCard(s.filter1,tp,LOCATION_HAND,0,1,nil,tp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -26,9 +26,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Used skill flag register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
-	local g=Duel.SelectMatchingCard(tp,tgfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_HAND,0,1,1,nil,tp)
 	local att=g:GetFirst():GetAttribute()
 	Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
-	local tc=Duel.SelectMatchingCard(tp,thfilter,tp,LOCATION_DECK,0,1,1,nil,att)
+	local tc=Duel.SelectMatchingCard(tp,filter2,tp,LOCATION_DECK,0,1,1,nil,att)
 	Duel.SendtoHand(tc,tp,REASON_RULE)
 end
