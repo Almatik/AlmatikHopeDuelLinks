@@ -30,6 +30,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,tgfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
 	Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
-	local tc=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_DECK,0,1,1,nil,Duel.GetOperatodGroup():GetFirst():GetAttribute())
+	local tc=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_DECK,0,1,1,nil,Duel.GetOperatedGroup():GetFirst():GetAttribute())
 	Duel.SendtoHand(tc,tp,REASON_RULE)
 end
