@@ -19,7 +19,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_HAND,0,1,nil,tp
+		and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_HAND,0,1,nil,tp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
