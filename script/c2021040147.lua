@@ -12,6 +12,12 @@ end
 function s.filter2(c,att)
 	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and not c:IsAttribute(att)
 end
+function s.filterl(c)
+	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_LIGHT)
+end
+function s.filterd(c)
+	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK)
+end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
@@ -27,8 +33,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_HAND,0,1,1,nil,tp)
-	local att=g:GetFirst():GetAttribute()
 	Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
-	local tc=Duel.SelectMatchingCard(tp,filter2,tp,LOCATION_DECK,0,1,1,nil,att)
+	if g:GetFirst():IsAttribute(ATTRIBUTE_DARK) then
+		local tc=Duel.SelectMatchingCard(tp,filterl,tp,LOCATION_DECK,0,1,1,nil)
+	else
+		local tc=Duel.SelectMatchingCard(tp,filterd,tp,LOCATION_DECK,0,1,1,nil)
+	end
 	Duel.SendtoHand(tc,tp,REASON_RULE)
 end
