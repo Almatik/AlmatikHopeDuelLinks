@@ -27,8 +27,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_HAND,0,1,1,nil)
+	local att=g:GetAttribute()
 	if #g>0 and Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 then
-		local tc=Duel.SelectMatchingCard(tp,filter2,tp,LOCATION_DECK,0,1,1,nil,g:GetAttribute())
+		local tc=Duel.SelectMatchingCard(tp,filter2,tp,LOCATION_DECK,0,1,1,nil,att)
 		Duel.SendtoHand(tc,tp,REASON_RULE)
 	end
 end
