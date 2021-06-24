@@ -6,8 +6,9 @@ function s.initial_effect(c)
 	aux.DuelLinksStartUp(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	--condition
-	return Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_DECK,0,nil,RACE_INSECT):GetClassCount(Card.GetCode)>=4
+	return g:Filter(Card.IsRace,nil,RACE_INSECT):GetClassCount(Card.GetCode)>=4
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
