@@ -7,7 +7,7 @@ function s.initial_effect(c)
 end
 function s.filter1(c)
 	return c:IsAbleToDeck() and (c:IsAttribute(ATTRIBUTE_DARK) or c:IsAttribute(ATTRIBUTE_LIGHT))
-		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
+		and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
 end
 function s.filter2(c,att)
 	return c:IsAbleToHand() and (c:IsAttribute(ATTRIBUTE_DARK) or c:IsAttribute(ATTRIBUTE_LIGHT)) and c:GetAttribute()~=att
