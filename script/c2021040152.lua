@@ -16,7 +16,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Field Spell
 	local res={Duel.GetCoinResult()}
 	local ct=ev
-	for i=ct do
+	for i=1,ct do
 		if Duel.GetFlagEffect(ep,id)<3 then
 			res[i]=1
 		end
