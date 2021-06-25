@@ -12,20 +12,9 @@ end
 function Auxiliary.DLCanIgnition(tp)
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
-function Auxiliary.DLCover(c)
-	local coverid=math.random(0,6)+2021040100
-	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
-end
 
--- Proc for basic skill
--- c: the card (card)
--- coverNum: the Number of the cover (int)
--- skillcon: condition to activate the skill (function)
--- skillop: operation related to the skill activation (function)
--- countlimit: number of times you can use this skill
--- skilltype: the type of the skill
--- setcode: the EVENT code
 
+--Covers
 function Auxiliary.DuelLinksCover(c)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -35,6 +24,19 @@ function Auxiliary.DuelLinksCover(c)
 	e1:SetOperation(Auxiliary.DLCover(c))
 	c:RegisterEffect(e1)
 end
+function Auxiliary.DLCover(c)
+	local coverid=math.random(0,6)+2021040100
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
+end
+-- Proc for basic skill
+-- c: the card (card)
+-- coverNum: the Number of the cover (int)
+-- skillcon: condition to activate the skill (function)
+-- skillop: operation related to the skill activation (function)
+-- countlimit: number of times you can use this skill
+-- skilltype: the type of the skill
+-- setcode: the EVENT code
+
 function Auxiliary.DuelLinksStartUp(c,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
