@@ -5,21 +5,24 @@ function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
-	--Discard filter
-function s.tgfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(s.filter1,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
+function s.filter(c,lv,race,att)
+	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER)
+		and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+		and c:IsLevel(lv)
+		and c:IsRace(race)
+		and not c:IsAttribute(att)
 end
-	--Filter to send 1 monster with opposite attribute of discard monster
-function s.filter1(c,att)
-	return c:IsAbleToGrave() and c:IsType(TYPE_MONSTER) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and not c:IsAttribute(att)
+function s.tgtfilter(c,tp)
+	return c:IsAbleToDeck() and c:IsType(TYPE_MONSTER)
+		and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_HAND,0,1,nil,tp)
+		and Duel.IsExistingMatchingCard(s.tgtfilter,tp,LOCATION_HAND,0,1,nil,tp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -28,8 +31,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Used skill flag register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
-	local g=Duel.SelectMatchingCard(tp,tgfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
-	Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
-	local tc=Duel.SelectMatchingCard(tp,filter1,tp,LOCATION_DECK,0,1,1,nil,Duel.GetOperatedGroup():GetFirst():GetAttribute())
-	Duel.SendtoHand(tc,tp,REASON_RULE)
+	local tc=Duel.SelectMatchingCard(tp,s.tgtfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
+	Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+	local lv=tc:GetFirst():GetLevel()
+	local race=tc:GetFirst():GetRace()
+	local att=tc:GetFirst():GetAttribute()
+	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil,lv,race,att)
+	Duel.SendtoHand(g,tp,REASON_RULE)
 end
