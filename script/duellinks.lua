@@ -35,7 +35,7 @@ function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop,countlimit)
 	e2:SetCode(EVENT_STARTUP)
 	e2:SetCountLimit(countlimit)
 	e2:SetRange(0x5f)
-	e2:SetOperation(skillcon)
+	e2:SetCondition(skillcon)
 	e2:SetOperation(skillop)
 	c:RegisterEffect(e2)
 end
