@@ -3,7 +3,7 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksTrigger(c,2021040100,s.flipcon,s.flipop,nil,EVENT_TOSS_COIN_NEGATE)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,nil,EVENT_TOSS_COIN_NEGATE)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
