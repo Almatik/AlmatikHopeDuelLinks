@@ -3,7 +3,8 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
+	aux.DuelLinksCover(c)
+	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil

@@ -12,6 +12,10 @@ end
 function Auxiliary.DLCanIgnition(tp)
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
+function Auxiliary.DuelLinksCover(c)
+	local coverid=math.random(0,6)+2021040100
+	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
+end
 
 -- Proc for basic skill
 -- c: the card (card)
@@ -21,13 +25,13 @@ end
 -- countlimit: number of times you can use this skill
 -- skilltype: the type of the skill
 -- setcode: the EVENT code
-function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop,countlimit)
+function Auxiliary.DuelLinksStartUp(c,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid))
+	e1:SetOperation(Auxiliary.DLSkillOp())
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c) 
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -39,38 +43,38 @@ function Auxiliary.DuelLinksStartUp(c,coverid,skillcon,skillop,countlimit)
 	e2:SetOperation(skillop)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.DuelLinksPredraw(c,coverid,skillcon,skillop,countlimit)
+function Auxiliary.DuelLinksPredraw(c,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,EVENT_PREDRAW))
+	e1:SetOperation(Auxiliary.DLSkillOp(skillcon,skillop,countlimit,EVENT_PREDRAW))
 	c:RegisterEffect(e1)
 end
-function Auxiliary.DuelLinksIgnition(c,coverid,skillcon,skillop,countlimit)
+function Auxiliary.DuelLinksIgnition(c,skillcon,skillop,countlimit)
 	--activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,EVENT_FREE_CHAIN))
+	e1:SetOperation(Auxiliary.DLSkillOp(skillcon,skillop,countlimit,EVENT_FREE_CHAIN))
 	c:RegisterEffect(e1)
 end
-function Auxiliary.DuelLinksTrigger(c,coverid,skillcon,skillop,countlimit,setcode)
+function Auxiliary.DuelLinksTrigger(c,skillcon,skillop,countlimit,setcode)
 	--activate
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,setcode))
+	e1:SetOperation(Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode))
 	c:RegisterEffect(e1)
 end
 
 -- Skill Ignition
-function Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,setcode)
+function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
 		if skillop~=nil then
@@ -87,7 +91,6 @@ function Auxiliary.DLSkillOp(coverid,skillcon,skillop,countlimit,setcode)
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 		--generate the skill in the "skill zone"
-		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
