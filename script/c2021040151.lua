@@ -14,11 +14,11 @@ function s.initial_effect(c)
 	e1:SetOperation(s.checkop)
 	c:RegisterEffect(e1)
 end
-function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	return g:Filter(c.toss_coin,nil,nil):GetClassCount(Card.GetCode)>=7
 end
-function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.RegisterFlagEffect(ep,id,0,0,0)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
