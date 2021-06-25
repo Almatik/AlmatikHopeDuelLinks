@@ -21,7 +21,7 @@ function Auxiliary.DuelLinksCover(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(function Duel.Hint(HINT_SKILL_COVER,c:GetControler(),math.random(0,6)+2021040100) end)
+	e1:SetOperation(Auxiliary.DLCover(c))
 	c:RegisterEffect(e1)
 end
 function Auxiliary.DLCover(c)
