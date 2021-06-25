@@ -7,7 +7,7 @@ function s.initial_effect(c)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return ep==tp and Duel.GetFlagEffect(ep,id)>3
+	return ep==tp and Duel.GetFlagEffect(ep,id)<3
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
