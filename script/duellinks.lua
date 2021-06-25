@@ -32,7 +32,7 @@ function Auxiliary.DuelLinksStartUp(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DuelLinksCover())
+	e1:SetOperation(Auxiliary.DuelLinksCover(c))
 	c:RegisterEffect(e1)
 end
 function Auxiliary.DuelLinksStartUp(c,skillcon,skillop,countlimit)
