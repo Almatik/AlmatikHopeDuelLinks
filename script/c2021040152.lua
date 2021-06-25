@@ -14,9 +14,11 @@ function s.initial_effect(c)
 	e1:SetOperation(s.checkop)
 	c:RegisterEffect(e1)
 end
+function s.checkfilter(c)
+	return c.toss_coin
+end
 function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-	return g:Filter(c.toss_coin,nil,nil):GetClassCount(Card.GetCode)>=5
+	return Duel.GetMatchingGroup(s.checkfilter,tp,LOCATION_DECK,0,nil):GetClassCount(Card.GetCode)>=5
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.RegisterFlagEffect(ep,id,0,0,0)
