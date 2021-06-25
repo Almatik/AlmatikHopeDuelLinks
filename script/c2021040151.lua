@@ -1,4 +1,4 @@
---Master of Destiny
+--Master of Destiny (2019 v2)
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
@@ -16,7 +16,7 @@ function s.initial_effect(c)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-	return g:Filter(c.toss_coin,nil,nil):GetClassCount(Card.GetCode)>=5
+	return g:Filter(c.toss_coin,nil,nil):GetClassCount(Card.GetCode)>=7
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.RegisterFlagEffect(ep,id,0,0,0)
