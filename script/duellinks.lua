@@ -25,8 +25,6 @@ function Auxiliary.DuelLinksCover(c)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.DLCover(c)
-	local coverid=math.random(0,6)+2021040100
-	Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 end
 -- Proc for basic skill
 -- c: the card (card)
@@ -103,6 +101,8 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 		--generate the skill in the "skill zone"
+		local coverid=math.random(0,6)+2021040100
+		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
