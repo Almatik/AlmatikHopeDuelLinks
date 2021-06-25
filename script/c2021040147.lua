@@ -29,8 +29,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Used skill flag register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
-	local tc=Duel.SelectTarget(tp,s.tgtfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
+	local tc=Duel.SelectMatchingCard(tp,s.tgtfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
 	Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
-	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil,c:GetAttribute())
+	local att=tc:GetFirst():GetAttribute()
+	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil,att)
 	Duel.SendtoHand(g,tp,REASON_RULE)
 end
