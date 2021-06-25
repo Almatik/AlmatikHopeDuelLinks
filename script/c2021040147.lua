@@ -8,9 +8,9 @@ end
 function s.filter(c,lv,race,att)
 	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER)
 		and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
-		and not c:IsAttribute(att)
 		and c:IsLevel(lv)
 		and c:IsRace(race)
+		and not c:IsAttribute(att)
 end
 function s.tgtfilter(c,tp)
 	return c:IsAbleToDeck() and c:IsType(TYPE_MONSTER)
