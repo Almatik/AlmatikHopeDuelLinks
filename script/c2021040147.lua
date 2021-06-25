@@ -6,10 +6,13 @@ function s.initial_effect(c)
 	aux.DuelLinksIgnition(c,2021040100,s.flipcon,s.flipop,1)
 end
 function s.filter(c,att)
-	return c:IsAbleToHand() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK) and not c:IsAttribute(att)
+	return c:IsAbleToHand() and c:IsType(TYPE_MONSTER)
+		and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+		and not c:IsAttribute(att)
 end
 function s.tgtfilter(c,tp)
-	return c:IsAbleToDeck() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+	return c:IsAbleToDeck() and c:IsType(TYPE_MONSTER)
+		and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
@@ -17,7 +20,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingTarget(s.tgtfilter,tp,LOCATION_HAND,0,1,nil,tp)
+		and Duel.IsExistingMatchingCard(s.tgtfilter,tp,LOCATION_HAND,0,1,nil,tp)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
