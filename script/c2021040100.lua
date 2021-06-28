@@ -17,6 +17,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(id,1))
 		local code=Duel.SelectCardsFromCodes(p,1,1,false,false,table.unpack(skill))
+		local tc=Duel.CreateToken(p,code)
 		Duel.SendtoDeck(code,p,2,REASON_RULE)
 	end
 end
