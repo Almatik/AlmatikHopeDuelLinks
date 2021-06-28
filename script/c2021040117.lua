@@ -29,7 +29,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_CANNOT_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(1,0)
-	e2:SetTarget(aux.TRUE)
 	c:RegisterEffect(e2)
 	aux.RegisterClientHint(c,nil,tp,1,0,aux.Stringid(id,2),nil)
 end
