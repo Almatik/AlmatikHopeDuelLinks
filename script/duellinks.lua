@@ -91,10 +91,10 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 	    local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
 	    local tc=g:GetFirst()
-	    local cover=Duel.GetRandomNumber(1,62)+2021040100
+	    local coverс=Duel.GetRandomNumber(1,62)+2021040100
 	    while tc do
 	        --generate a cover for a card
-	        tc:Cover(cover)
+	        tc:Cover(coverс)
 	        tc=g:GetNext()
 	    end
 		--generate a cover for a card
