@@ -1,4 +1,5 @@
 --Duel Links Skills
+Duel.LoadScript("turboduel.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--activate
@@ -17,6 +18,6 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(id,1))
 		local tc=Duel.SelectCardsFromCodes(p,1,1,false,false,table.unpack(skill))
-		Duel.SendtoDeck(tc:GetFirst(),p,2,REASON_RULE)
+		s.initial_effect(tc)
 	end
 end
