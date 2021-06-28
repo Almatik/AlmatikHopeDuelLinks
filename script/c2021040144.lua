@@ -16,9 +16,16 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Get Cards
 	local c=e:GetHandler()
 	local n=Duel.GetRandomNumber(1,3)
-	repeat
-		local n=n-1
+	if n>0 then
 		local tc=Duel.CreateToken(tp,27911549)
 		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
-	until n==0
+	end
+	if n>1 then
+		local tc=Duel.CreateToken(tp,27911549)
+		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
+	end
+	if n>2 then
+		local tc=Duel.CreateToken(tp,27911549)
+		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
+	end
 end
