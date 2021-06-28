@@ -15,10 +15,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Balance
 	--Get Cards
 	local c=e:GetHandler()
-	local n=Duel.GetRandomNumber(1,3)
 	repeat
-		Duel.RegisterFlagEffect(ep,id,0,0,0)
+		Duel.RegisterFlagEffect(tp,id,0,0,0)
 		local tc=Duel.CreateToken(tp,27911549)
 		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
-	until Duel.GetFlagEffect(ep,id)==n
+	until Duel.GetFlagEffect(tp,id)==Duel.GetRandomNumber(1,3)
 end
