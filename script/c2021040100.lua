@@ -15,7 +15,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DisableShuffleCheck()
 	Duel.SendtoDeck(e:GetHandler(),tp,-2,REASON_RULE)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_CODE)
-	s.announce_filter={0x1993,OPCODE_ISSETCARD}
+	s.announce_filter={0x1995,OPCODE_ISSETCARD}
 	for p=0,1 do
 		local ac=Duel.AnnounceCard(p,table.unpack(s.announce_filter))
 		local tc=Duel.CreateToken(p,ac)
