@@ -15,7 +15,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Balance
 	--Get Cards
 	local c=e:GetHandler()
-	local n=Duel.AnnounceNumber(tp,1,2,3)
+	local n=Duel.RandomNumber(1,3)
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		local tc=Duel.CreateToken(tp,27911549)
