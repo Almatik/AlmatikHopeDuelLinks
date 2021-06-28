@@ -75,14 +75,6 @@ end
 -- Skill Ignition
 function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
-	    local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
-	    local tc=g:GetFirst()
-	    local coverс=Duel.GetRandomNumber(1,62)+2021040100
-	    while tc do
-	        --generate a cover for a card
-	        tc:Cover(coverс)
-	        tc=g:GetNext()
-	    end
 		local c=e:GetHandler()
 		if skillop~=nil then
 			local e1=Effect.CreateEffect(c)
