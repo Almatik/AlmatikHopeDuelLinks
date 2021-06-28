@@ -18,7 +18,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		local ac=Duel.AnnounceCard(p,table.unpack(s.announce_filter))
 		local tc=Duel.CreateToken(p,ac)
-		Duel.SendtoDeck(tc,p,0,REASON_EFFECT)
+		Duel.SendtoDeck(tc,p,2,REASON_EFFECT)
 	end
 end
 
