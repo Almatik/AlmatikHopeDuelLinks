@@ -89,6 +89,14 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		end
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
+	    local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+	    local tc=g:GetFirst()
+	    local coverid=Duel.GetRandomNumber(1,62)+2021040100
+	    while tc do
+	        --generate a cover for a card
+	        tc:Cover(coverid)
+	        tc=g:GetNext()
+	    end
 		--generate a cover for a card
 		local coverid=math.random(0,6)+2021040100
 		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
