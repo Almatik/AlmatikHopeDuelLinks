@@ -15,10 +15,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Balance
 	--Get Cards
 	local c=e:GetHandler()
-	local n=Duel.GetRandomNumber(1,2)
+	local num=Duel.GetRandomNumber(1,2)
 	repeat
-		local n=n-1
+		num = num-1
 		local tc=Duel.CreateToken(tp,27911549)
 		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
-	until n==0
+	until num==0
 end
