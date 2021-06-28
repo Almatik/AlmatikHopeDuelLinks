@@ -14,10 +14,12 @@ end
 function s.op(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DisableShuffleCheck()
 	Duel.SendtoDeck(e:GetHandler(),tp,-2,REASON_RULE)
-	local skill={2021040101,2021040102,2021040103,2021040104,2021040105,2021040106,2021040107,2021040108,2021040109,2021040110}
+	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_CODE)
+	s.announce_filter={0x1993,OPCODE_ISSETCARD}
 	for p=0,1 do
-		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(id,1))
-		local tc=Duel.SelectCardsFromCodes(p,1,1,false,false,table.unpack(skill))
-		s.initial_effect(tc)
+		local ac=Duel.AnnounceCard(p,table.unpack(s.announce_filter))
+		local tc=Duel.CreateToken(p,ac)
+		Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
 	end
 end
+
