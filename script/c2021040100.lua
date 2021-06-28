@@ -16,8 +16,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 	local skill={2021040101,2021040102,2021040103,2021040104,2021040105,2021040106,2021040107,2021040108,2021040109,2021040110}
 	for p=0,1 do
 		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(id,1))
-		local code=Duel.SelectCardsFromCodes(p,1,1,false,false,table.unpack(skill))
-		local tc=Duel.CreateToken(p,code)
+		local tc=Duel.SelectCardsFromCodes(p,1,1,false,false,table.unpack(skill))
 		Duel.SendtoDeck(code,p,2,REASON_RULE)
 	end
 end
