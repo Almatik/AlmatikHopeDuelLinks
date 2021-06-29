@@ -25,6 +25,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SendtoDeck(g,tp,-2,REASON_RULE)
 	local tc=Duel.CreateToken(tp,38517737)
-	Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,g:GetPreviousPosition(),true,g:GetPreviousSequence())
+	Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,g:GetPosition(),true,g:GetSequence())
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 end
