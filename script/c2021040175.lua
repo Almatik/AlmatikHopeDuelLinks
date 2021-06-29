@@ -8,13 +8,18 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
+	e1:SetCondition(s.checkcon)
 	e1:SetOperation(s.checkop)
 	c:RegisterEffect(e1)
 end
+function s.checkfilter(c)
+	return c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsLevelAbove(5)
+end
+function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
+   return eg:IsExists(s,checkfilter,1,nil,tp) 
+end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:GetPreviousControler()==tp then
-		Duel.RegisterFlagEffect(tp,id,0,0,0)
-	end
+	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_DRAW,0,0)
 end
 function s.filter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK)
