@@ -23,14 +23,12 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 		s[tp]=Duel.GetLP(tp)
 	end
 end
-function s.filter(c)
-	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_WARRIOR) and c:IsLevel(8)
-end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp) and s[2+tp]>=1000
+		and Duel.IsPlayerCanDiscardDeck(tp,1)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -38,7 +36,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Used skill flag register
 	local c=e:GetHandler()
-
-	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
-	s[2+tp]=0
+	if Duel.DiscardDeck(tp,1,REASON_COST)>0 then
+		Duel.Recover(tp,300,REASON_EFFECT)
+		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
+		s[2+tp]=0
+	end
 end
