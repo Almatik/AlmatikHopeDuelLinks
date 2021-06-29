@@ -6,7 +6,7 @@ function s.initial_effect(c)
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 end
 function s.filter(c)
-	return c:IsCode() and c:IsAttackAbove(3000)
+	return c:IsCode(89631139) and c:IsAttackAbove(3000)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
