@@ -24,7 +24,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local pos=g:GetFirst():GetPosition()
-	local seq=g:GetFirst():GetSequence()
+	local seq=g:GetFirst():GetSequence()+1
 	Duel.SendtoDeck(g,tp,-2,REASON_RULE)
 	local tc=Duel.CreateToken(tp,38517737)
 	Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,pos,true,seq)
