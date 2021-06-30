@@ -5,15 +5,12 @@ function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 end
-function s.filter(c)
-	return c:IsAbleToDeck()
-end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>0 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.GetMatchingGroupCount(s.filter,tp,0,LOCATION_ONFIELD,nil)>0>0
+		and Duel.GetMatchingGroupCount(s.filter,tp,0,LOCATION_ONFIELD,nil)>0
 		and Duel.GetLP(tp)<=1500
 end
 function s.filter(c)

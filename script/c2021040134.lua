@@ -5,9 +5,6 @@ function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 end
-function s.filter(c)
-	return c:IsAbleToDeck()
-end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>0 then return end
