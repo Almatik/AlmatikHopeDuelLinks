@@ -36,9 +36,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.SelectYesNo(tp,aux.Stringid(id,0)) then return end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,1,1,nil)
-	if Duel.MoveSequence(g,0)~=0 then
-		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
-		s[2+tp]=0
-	end
+	local tc=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,1,1,nil)
+	Duel.MoveSequence(tc,0)
+	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
+	s[2+tp]=0
 end
