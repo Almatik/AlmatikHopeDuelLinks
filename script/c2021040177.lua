@@ -3,11 +3,12 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,nil,EVENT_PHASE)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,nil,EVENT_PHASE+PHASE_END)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+	local p=Duel.GetTurnPlayer()
 	--condition
-	return Duel.GetCurrentPhase()==PHASE_END
+	return Duel.IsExistingMatchingCard(s.filter,p,LOCATION_GRAVE,0,1,nil)
 end
 function s.filter(c)
 	return c:IsType(TYPE_MONSTER)
