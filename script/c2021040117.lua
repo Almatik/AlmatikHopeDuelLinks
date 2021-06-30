@@ -25,11 +25,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp
-		and (Duel.GetTurnCount()==1
-		and Duel.GetTurnCount()==2)
+	return Duel.GetTurnPlayer()==tp and Duel.GetFlagEffect(tp,id)==0
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RegisterFlagEffect(tp,id,0,0,0)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
