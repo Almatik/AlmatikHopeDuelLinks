@@ -37,7 +37,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	local tc=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,1,1,nil)
-	Duel.MoveSequence(tc,0)
-	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
-	s[2+tp]=0
+	if tc then
+		Duel.ShuffleDeck(tp)
+		Duel.MoveSequence(tc:GetFirst(),0)
+		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
+		s[2+tp]=0
+	end
 end
