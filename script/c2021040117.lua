@@ -3,11 +3,14 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksStartUp(c,s.flipcon,s.flipop,1)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,1,EVENT_PREDRAW)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
+	return Duel.GetCurrentChain()==0
+		and Duel.GetTurnPlayer()==tp
+		and (Duel.GetTurnCount()==1
+		or Duel.GetTurnCount()==2)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -21,7 +24,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(1,0)
-	e1:SetValue(s.aclimit)
+	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	aux.RegisterClientHint(c,nil,tp,1,0,aux.Stringid(id,1),nil)
@@ -33,7 +36,4 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 	aux.RegisterClientHint(c,nil,tp,1,0,aux.Stringid(id,2),nil)
-end
-function s.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
