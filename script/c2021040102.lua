@@ -4,7 +4,24 @@ local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
-	aux.DuelLinksAdjustLP(c,s)
+	aux.GlobalCheck(s,function()
+		s[0]=nil
+		s[1]=nil
+		s[2]=0
+		s[3]=0
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_ADJUST)
+		ge1:SetOperation(s.checkop)
+		Duel.RegisterEffect(ge1,c:GetControler())
+	end)
+end
+function s.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if not s[tp] then s[tp]=Duel.GetLP(tp) end
+	if s[tp]>Duel.GetLP(tp) then
+		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
+		s[tp]=Duel.GetLP(tp)
+	end
 end
 function s.filter(c)
 	return c:IsAbleToDeck()
