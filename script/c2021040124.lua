@@ -27,7 +27,7 @@ function s.checkop()
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return s[2+tp]>=0 and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW
+	return s[2+tp]>=2000 and ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW
 		and Duel.GetTurnPlayer()==tp
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_DECK,0,1,nil,eg:GetFirst():GetCode())
 end
