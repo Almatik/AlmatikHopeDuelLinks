@@ -13,6 +13,8 @@ HINT_SKILL_REMOVE = 203
 -- skilltype: the type of the skill
 -- setcode: the EVENT code
 
+
+
 function Auxiliary.DuelLinksStartUp(c,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)

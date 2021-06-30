@@ -2,6 +2,7 @@
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
+	local tp=e:GetHandlerPlayer()
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
@@ -13,7 +14,7 @@ function s.initial_effect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_ADJUST)
 		ge1:SetOperation(s.checkop)
-		Duel.RegisterEffect(ge1,0)
+		Duel.RegisterEffect(ge1,tp)
 	end)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
@@ -30,7 +31,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
-	return aux.CanActivateSkill(tp) and s[2+tp]>=1000
+	return aux.CanActivateSkill(tp) and s[2+tp]>=0
 		and Duel.IsPlayerCanDraw(tp,1)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
