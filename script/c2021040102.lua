@@ -13,14 +13,16 @@ function s.initial_effect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_ADJUST)
 		ge1:SetOperation(s.checkop)
-		Duel.RegisterEffect(ge1,1)
+		Duel.RegisterEffect(ge1,0)
 	end)
 end
-function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if not s[tp] then s[tp]=Duel.GetLP(tp) end
-	if s[tp]>Duel.GetLP(tp) then
-		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
-		s[tp]=Duel.GetLP(tp)
+function s.checkop()
+	for tp=0,1 do
+		if not s[tp] then s[tp]=Duel.GetLP(tp) end
+		if s[tp]>Duel.GetLP(tp) then
+			s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
+			s[tp]=Duel.GetLP(tp)
+		end
 	end
 end
 function s.filter(c)
