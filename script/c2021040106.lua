@@ -9,8 +9,8 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND+LOCATION_DECK,0)
 	--condition
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
-		and g:Filter(Card.IsType,nil,TYPE_SPELL):GetClassCount(Card.GetCode)>6
-		and g:Filter(Card.IsType,nil,TYPE_TRAP):GetClassCount(Card.GetCode)>6
+		and g:Filter(Card.IsType,nil,TYPE_SPELL):GetCount()>6
+		and g:Filter(Card.IsType,nil,TYPE_TRAP):GetCount()>6
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
