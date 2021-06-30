@@ -28,7 +28,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
-	return aux.CanActivateSkill(tp) and s[2+tp]>=0
+	return aux.CanActivateSkill(tp) and s[2+tp]>=1000
 		and Duel.IsPlayerCanDraw(tp,1)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
