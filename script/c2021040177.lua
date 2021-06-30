@@ -3,7 +3,11 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksTrigger(c,true,s.flipop,nil,EVENT_PHASE+PHASE_END)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,nil,EVENT_PHASE)
+end
+function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+	--condition
+	return Duel.GetCurrentPhase()==PHASE_END
 end
 function s.filter(c)
 	return c:IsType(TYPE_MONSTER)
