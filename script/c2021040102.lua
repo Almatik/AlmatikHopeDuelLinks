@@ -13,7 +13,7 @@ function s.initial_effect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_ADJUST)
 		ge1:SetOperation(s.checkop)
-		Duel.RegisterEffect(ge1,c:GetControler())
+		Duel.RegisterEffect(ge1,1)
 	end)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
