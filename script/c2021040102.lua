@@ -4,7 +4,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
-	aux.GlobalCheck(s,c,function()
+	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
 		s[2]=0
