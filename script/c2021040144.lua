@@ -3,11 +3,11 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksStartUp(c,s.flipcon,s.flipop,1)
+	aux.DuelLinksPreDraw(c,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return true
+	return Duel.GetTurnCount()==1
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
@@ -20,5 +20,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		num = num-1
 		local tc=Duel.CreateToken(tp,27911549)
 		Duel.SendtoDeck(tc,1-tp,2,REASON_RULE)
+		tc:ReverseInDeck()
 	until num==0
+	Duel.ShuffleDeck(1-tp)
 end
