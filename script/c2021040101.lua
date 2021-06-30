@@ -1,13 +1,13 @@
 --Switcheroo (2020)
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
+local s[0]=nil
+local s[1]=nil
+local s[2]=0
+local s[3]=0
 function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
-	local s[0]=nil
-	local s[1]=nil
-	local s[2]=0
-	local s[3]=0
 	local ge1=Effect.CreateEffect(c)
 	ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	ge1:SetCode(EVENT_ADJUST)
