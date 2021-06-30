@@ -4,7 +4,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
-	aux.DuelLinksAdjustLP(s)
+	aux.DuelLinksAdjustLP(c,s)
 end
 function s.filter(c)
 	return c:IsAbleToDeck()

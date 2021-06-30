@@ -12,7 +12,7 @@ HINT_SKILL_REMOVE = 203
 -- countlimit: number of times you can use this skill
 -- skilltype: the type of the skill
 -- setcode: the EVENT code
-function Auxiliary.DuelLinksAdjustLP(s)
+function Auxiliary.DuelLinksAdjustLP(c,s)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
