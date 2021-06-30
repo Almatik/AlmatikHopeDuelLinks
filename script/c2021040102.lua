@@ -17,7 +17,6 @@ function s.initial_effect(c)
 	end)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local tp=e:GetHandlerPlayer()
 	if not s[tp] then s[tp]=Duel.GetLP(tp) end
 	if s[tp]>Duel.GetLP(tp) then
 		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
@@ -28,7 +27,6 @@ function s.filter(c)
 	return c:IsAbleToDeck()
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
-	local tp=e:GetHandlerPlayer()
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
@@ -36,7 +34,6 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsPlayerCanDraw(tp,1)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
-	local tp=e:GetHandlerPlayer()
 	--place this card to the field
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
