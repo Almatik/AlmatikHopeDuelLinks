@@ -24,7 +24,7 @@ function Auxiliary.AdjustLP(e)
 		s[tp]=Duel.GetLP(tp)
 	end
 end
-function Auxiliary.CheckLP(num)
+function Auxiliary.CheckLP(e,num)
 	local tp=e:GetHandlerPlayer()
 	return s[2+tp]>=num
 end
