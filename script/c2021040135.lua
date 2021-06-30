@@ -18,13 +18,14 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--Field Spell
 	local c=e:GetHandler()
-	local n=math.floor((2000-Duel.GetLP(tp))/1000)+2
+	local num=2
+	if Duel.GetLP(tp)<=1000 then local num=3 end
 	repeat
 		Duel.RegisterFlagEffect(ep,id,0,0,0)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			local tc=Duel.CreateToken(tp,26439287)
-			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP_ATTACK,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
 			--cannot release
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -53,8 +54,14 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			local e5=e4:Clone()
 			e5:SetCode(EFFECT_CANNOT_ATTACK)
 			tc:RegisterEffect(e5)
+			local e6=Effect.CreateEffect(c)
+			e6:SetType(EFFECT_TYPE_SINGLE)
+			e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+			e6:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+			e6:SetValue(1)
+			tc:RegisterEffect(e6)
 	   end
-	until Duel.GetFlagEffect(ep,id)==n
+	until Duel.GetFlagEffect(ep,id)==num
 end
 function s.limit(e,c,tp,sumtp,sumpos)
 	return not c:IsType(TYPE_FUSION)
