@@ -42,6 +42,12 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetCode(EFFECT_CANNOT_BE_MATERIAL)
 			e3:SetValue(aux.cannotmatfilter(SUMMON_TYPE_SYNCHRO,SUMMON_TYPE_XYZ,SUMMON_TYPE_LINK))
 			tc:RegisterEffect(e3)
+			local e4=Effect.CreateEffect(c)
+			e4:SetType(EFFECT_TYPE_SINGLE)
+			e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+			e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+			e4:SetValue(1)
+			tc:RegisterEffect(e4)
 	   end
 	until Duel.GetFlagEffect(ep,id)==n
 end

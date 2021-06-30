@@ -24,7 +24,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 			then
 			local tc=Duel.CreateToken(tp,26439287)
-			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP_ATTACK,true)
 		end
 	until Duel.GetFlagEffect(ep,id)==n
 end
