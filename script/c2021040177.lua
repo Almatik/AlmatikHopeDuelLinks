@@ -3,7 +3,7 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,nil,EVENT_PHASE+PHASE_END)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,1,EVENT_PHASE+PHASE_END)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetTurnPlayer()
