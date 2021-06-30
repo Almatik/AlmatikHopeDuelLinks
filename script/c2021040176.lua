@@ -21,7 +21,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--Used skill flag register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
-	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	Duel.SendtoHand(g,tp,REASON_RULE)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 	s[2+tp]=0
