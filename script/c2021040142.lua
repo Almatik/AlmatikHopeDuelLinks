@@ -3,7 +3,7 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksPreDraw(c,s.flipcon,s.flipop,1)
+	aux.DuelLinksPredraw(c,s.flipcon,s.flipop,1)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND+LOCATION_DECK,0)
