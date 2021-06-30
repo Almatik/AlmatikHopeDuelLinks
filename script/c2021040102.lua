@@ -14,8 +14,6 @@ function s.initial_effect(c)
 		ge1:SetCode(EVENT_ADJUST)
 		ge1:SetOperation(s.checkop)
 		Duel.RegisterEffect(ge1,0)
-		local ge2=ge1:Clone()
-		Duel.RegisterEffect(ge2,1)
 	end)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
