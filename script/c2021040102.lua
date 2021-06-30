@@ -2,7 +2,6 @@
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	local tp=c:GetHandlerPlayer()
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 	aux.GlobalCheck(s,function()
