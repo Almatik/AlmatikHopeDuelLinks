@@ -3,7 +3,8 @@ HINT_SKILL_COVER = 201
 HINT_SKILL_FLIP  = 202
 HINT_SKILL_REMOVE = 203
 --function that return if the player (tp) can activate the skill
-function Auxiliary.DLAdjustLP(c,s)
+function Auxiliary.DLAdjustLP(c)
+	local s=GetID(c)
 	aux.GlobalCheck(s,function()
 		s[0]=nil
 		s[1]=nil
