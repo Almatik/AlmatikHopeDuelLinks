@@ -23,7 +23,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(0x5f)
 	e1:SetCondition(s.condition)
 	e1:SetOperation(s.operation)
-	c:RegisterEffect(e1)
+	Duel.RegisterEffect(e1,tp)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
