@@ -3,17 +3,35 @@ HINT_SKILL_COVER = 201
 HINT_SKILL_FLIP  = 202
 HINT_SKILL_REMOVE = 203
 --function that return if the player (tp) can activate the skill
-function Auxiliary.DLCanStartup(tp)
-	return Duel.GetCurrentTurn()==1 and Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_DRAW
+function Auxiliary.DLAdjustLP(c)
+	aux.GlobalCheck(s,function()
+		s[0]=nil
+		s[1]=nil
+		s[2]=0
+		s[3]=0
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_ADJUST)
+		ge1:SetOperation(Auxiliary.AdjustLP)
+		Duel.RegisterEffect(ge1,0)
+	end)
 end
-function Auxiliary.DLIsAbletoDraw(tp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_DRAW and Duel.GetDrawCount()>0
+function Auxiliary.AdjustLP(e)
+	local tp=e:GetHandlerPlayer()
+	if not s[tp] then s[tp]=Duel.GetLP(tp) end
+	if s[tp]>Duel.GetLP(tp) then
+		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
+		s[tp]=Duel.GetLP(tp)
+	end
 end
-function Auxiliary.DLCanIgnition(tp)
-	return Duel.GetCurrentChain()==0 and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+function Auxiliary.CheckLP(num)
+	local tp=e:GetHandlerPlayer()
+	return s[2+tp]>=num
 end
-
-
+function Auxiliary.ResetLP()
+	local tp=e:GetHandlerPlayer()
+	s[2+tp]=0
+end
 
 -- Proc for basic skill
 -- c: the card (card)

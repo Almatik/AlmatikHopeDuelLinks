@@ -4,24 +4,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
-	aux.GlobalCheck(s,function()
-		s[0]=nil
-		s[1]=nil
-		s[2]=0
-		s[3]=0
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_ADJUST)
-		ge1:SetOperation(s.checkop)
-		Duel.RegisterEffect(ge1,0)
-	end)
-end
-function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if not s[tp] then s[tp]=Duel.GetLP(tp) end
-	if s[tp]>Duel.GetLP(tp) then
-		s[2+tp]=s[2+tp]+(s[tp]-Duel.GetLP(tp))
-		s[tp]=Duel.GetLP(tp)
-	end
+	aux.DLAdjustLP()
 end
 function s.filter(c)
 	return c:IsAbleToDeck()
@@ -30,7 +13,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
-	return aux.CanActivateSkill(tp) and s[2+tp]>=1000
+	return aux.CanActivateSkill(tp) and Auxiliary.CheckLP(1000)
 		and Duel.IsPlayerCanDraw(tp,1)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
@@ -47,7 +30,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 		if Duel.GetFlagEffect(ep,id)>1 then return end
 		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
-		s[2+tp]=0
+		aux.ResetLP()
 	end
 end
 
