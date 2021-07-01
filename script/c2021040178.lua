@@ -7,7 +7,7 @@ function s.initial_effect(c)
 end
 function s.cfilter(c,tp)
 	return c:IsLevelAbove(1) and not c:IsPublic()
-		and Duel.IsExistingTarget(s.lvfilter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(s.lvfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.lvfilter(c)
 	return c:IsLevelAbove(1) and c:IsFaceup()
@@ -29,7 +29,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmCards(1-tp,g)
 	Duel.ShuffleHand(tp)
 	local lv=g:GetFirst():GetLevel()
-	local tc=Duel.SelectTarget(tp,s.lvfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local tc=Duel.SelectMatchingCard(tp,s.lvfilter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
