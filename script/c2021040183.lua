@@ -1,5 +1,7 @@
 --Grit (2020)
-function c2021040182.initial_effect(c)
+Duel.LoadScript("duellinks.lua")
+local s,id=GetID()
+function s.initial_effect(c)
 	aux.DuelLinksTrigger(c,s.checkcon,s.checkop,1,EVENT_PREDRAW)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
