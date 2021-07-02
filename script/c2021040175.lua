@@ -13,10 +13,10 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.checkfilter(c)
-	return c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsLevelAbove(5)
+	return c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsLevelAbove(1)
 end
 function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
-   return eg:IsExists(s,checkfilter,1,nil,tp) 
+   return eg:IsExists(s.checkfilter,1,nil,tp) 
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_DRAW,0,0)
