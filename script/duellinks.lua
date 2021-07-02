@@ -82,7 +82,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		--generate a cover for a card
 		local coverid=Duel.GetRandomNumber(0,6)+2021040100
 		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
-		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 		local tc=g:GetFirst()
 		local coverdeck=Duel.GetRandomNumber(7,62)+2021040100
 		while tc do
