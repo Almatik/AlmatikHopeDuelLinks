@@ -50,10 +50,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local res={Duel.GetCoinResult()}
 	local ct=ev
 	for i=1,ct do
-		if Duel.GetFlagEffect(ep,id)<4 then
+		if Duel.GetFlagEffect(tp,id)<4 then
 			res[i]=1
 		end
-		Duel.RegisterFlagEffect(ep,id,0,0,0)
+		Duel.RegisterFlagEffect(tp,id,0,0,0)
 	end
 	Duel.SetCoinResult(table.unpack(res))
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
