@@ -19,7 +19,7 @@ function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
    return eg:IsExists(s.checkfilter,1,nil,tp) 
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_DRAW,0,0)
+	Duel.RegisterFlagEffect(tp,id,0,0,0)
 end
 function s.filter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK)
