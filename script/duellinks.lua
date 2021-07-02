@@ -87,7 +87,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		local cover=Duel.GetRandomNumber(7,62)+2021040100
 		while tc do
 			--generate a cover for a card
-			tc:Cover(coverid)
+			tc:Cover(cover)
 			tc=g:GetNext()
 		end
 		--generate the skill in the "skill zone"
