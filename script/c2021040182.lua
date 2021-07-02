@@ -29,7 +29,7 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipcon1(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return Duel.GetCurrentChain()==0 and Duel.GetFlagEffect(tp,id)==1
+	return Duel.GetFlagEffect(tp,id)==1
 		and Duel.GetBattleDamage(tp)>=Duel.GetLP(tp)
 end
 function s.flipop1(e,tp,eg,ep,ev,re,r,rp)
