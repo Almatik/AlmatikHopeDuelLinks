@@ -39,7 +39,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		local ac=Duel.GetRandomNumber(1,#s.mask)
 		local code=s.mask[ac]
 		local tc=Duel.CreateToken(tp,code)
-		Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP_DEFENCE,true)
+		Duel.MoveToField(tc,tp,tp,LOCATION_MZONE,POS_FACEUP_DEFENSE,true)
 		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 		s[2+tp]=0
 	end
