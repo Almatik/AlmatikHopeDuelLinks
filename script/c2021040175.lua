@@ -6,13 +6,15 @@ function s.initial_effect(c)
 	aux.DuelLinksPredraw(c,s.flipcon,s.flipop,1)
 end
 function s.filter(c,e,tp,tid)
-	return c:GetReason()&0x21==0x21 and c:GetTurnID()==tid-1
+	return c:GetReason()&0x21==0x21 and c:GetTurnID()==tid-1 and c:IsLevelAbove(5)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,id)>0 then return end
 	local tid=Duel.GetTurnCount()
 	--condition
 	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer()
-		and Duel.GetDrawCount(tp)==1 and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,tid)
+		and Duel.GetDrawCount(tp)==1
+		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,tid)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
@@ -28,5 +30,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(2)
 		e1:SetReset(RESET_PHASE+PHASE_DRAW)
 		Duel.RegisterEffect(e1,tp)
+		Duel.RegisterFlagEffect(tp,id,0,0,0)
 	end
 end
