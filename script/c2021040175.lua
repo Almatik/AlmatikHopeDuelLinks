@@ -20,6 +20,7 @@ function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,id,0,0,0)
+	Duel.Damage(tp,100,REASON_RULE)
 end
 function s.filter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK)
