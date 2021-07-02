@@ -91,6 +91,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			--generate a cover for a card
 			tc:Cover(coverid)
 		end
+		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		Duel.Remove(g,POS_FACEDOWN,REASON_RULE)
 		local rm=Duel.GetFieldGroup(tp,LOCATION_REMOVED,0)
 		Duel.SendtoDeck(rm,nil,2,REASON_EFFECT)
