@@ -84,7 +84,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		--generate the skill in the "skill zone"
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--generate random cover for your deck
-		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local g=Duel.GetFieldGroup(tp,LOCATION_DECK+LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
 		local coverid=Duel.GetRandomNumber(7,62)+2021040100
 		for tc in aux.Next(g) do
