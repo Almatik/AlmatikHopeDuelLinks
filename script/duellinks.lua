@@ -22,14 +22,16 @@ function Auxiliary.DuelLinksCover(c)
 	e1:SetOperation(Auxiliary.DLCover())
 	c:RegisterEffect(e1)
 end
-function Auxiliary.DLCover(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
-	local tc=g:GetFirst()
-	local coverid=Duel.GetRandomNumber(7,62)+2021040100
-	while tc do
-		--generate a cover for a card
-		tc:Cover(coverid)
-		tc=g:GetNext()
+function Auxiliary.DLCover()
+	return function(e,tp,eg,ep,ev,re,r,rp)
+		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local tc=g:GetFirst()
+		local coverid=Duel.GetRandomNumber(7,62)+2021040100
+		while tc do
+			--generate a cover for a card
+			tc:Cover(coverid)
+			tc=g:GetNext()
+		end
 	end
 end
 
