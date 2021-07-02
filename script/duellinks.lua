@@ -93,12 +93,19 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		end
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
+		local ed={}
+		local gc=#g
 		for tc in aux.Next(g) do
-			code=tc:GetCode()
 			Duel.SendtoDeck(tc,tp,-2,REASON_RULE)
+			table.insert(ed,tc:GetCode())
+		end
+		repeat
+			code=ed[gc]
 			tn=Duel.CreateToken(tp,code)
 			Duel.SendtoDeck(tn,nil,2,REASON_RULE)
-		end
+			gc=gc-1
+		until gc==0
+		
 		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
