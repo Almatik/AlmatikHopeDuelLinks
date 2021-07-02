@@ -21,13 +21,13 @@ function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroup(s.checkfilter,tp,LOCATION_DECK,0,nil):GetClassCount(Card.GetCode)>=5
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.RegisterFlagEffect(ep,id,0,0,0)
+	return Duel.RegisterFlagEffect(tp,id,0,0,0)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return ep==tp
-		and Duel.GetFlagEffect(ep,id)>0
-		and Duel.GetFlagEffect(ep,id)<4
+		and Duel.GetFlagEffect(tp,id)>0
+		and Duel.GetFlagEffect(tp,id)<4
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
