@@ -64,13 +64,6 @@ end
 -- Skill Ignition
 function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
-		local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-		local tc=g:GetFirst()
-		local coverid=Duel.GetRandomNumber(7,62)+2021040100
-		for tc in aux.Next(g) do
-			--generate a cover for a card
-			tc:Cover(coverid)
-		end
 		Duel.ShuffleDeck(tp)
 		local c=e:GetHandler()
 		if skillop~=nil then
@@ -91,6 +84,14 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		--generate the skill in the "skill zone"
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
+		--generate random cover for your deck
+		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local tc=g:GetFirst()
+		local coverid=Duel.GetRandomNumber(7,62)+2021040100
+		for tc in aux.Next(g) do
+			--generate a cover for a card
+			tc:Cover(coverid)
+		end
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
