@@ -92,7 +92,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			tc:Cover(coverid)
 		end
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
-		Duel.ShuffleSetCard(g)
+		Duel.ConfirmCards(tp,g)
 		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
