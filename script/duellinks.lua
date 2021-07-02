@@ -64,7 +64,6 @@ end
 -- Skill Ignition
 function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
-		Duel.ShuffleDeck(tp)
 		local c=e:GetHandler()
 		if skillop~=nil then
 			local e1=Effect.CreateEffect(c)
@@ -92,6 +91,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			--generate a cover for a card
 			tc:Cover(coverid)
 		end
+		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
