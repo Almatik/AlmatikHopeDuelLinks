@@ -85,11 +85,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 		local tc=g:GetFirst()
 		local coverdeck=Duel.GetRandomNumber(7,62)+2021040100
-		while tc do
-			--generate a cover for a card
 			tc:Cover(coverdeck)
-			tc=g:GetNext()
-		end
 		--generate the skill in the "skill zone"
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
 		--send to limbo then draw 1 if the skill was in the hand
