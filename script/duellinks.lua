@@ -71,6 +71,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			--generate a cover for a card
 			tc:Cover(coverid)
 		end
+		Duel.ShuffleDeck(tp)
 		local c=e:GetHandler()
 		if skillop~=nil then
 			local e1=Effect.CreateEffect(c)
