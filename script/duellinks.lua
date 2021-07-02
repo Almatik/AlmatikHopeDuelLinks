@@ -92,19 +92,9 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			tc:Cover(coverid)
 		end
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
-		local tc=g:GetFirst()
-		local ed={}
-		local gc=#g
-		for tc in aux.Next(g) do
-			Duel.SendtoDeck(tc,tp,-2,REASON_RULE)
-			table.insert(ed,tc:GetCode())
-		end
-		repeat
-			code=ed[gc]
-			tn=Duel.CreateToken(tp,code)
-			Duel.SendtoDeck(tn,nil,2,REASON_RULE)
-			gc=gc-1
-		until gc==0
+		Duel.Remove(g,POS_FACEDOWN,REASON_RULE)
+		local rm=Duel.GetFieldGroup(tp,LOCATION_REMOVED,0)
+		Duel.SendtoDeck(rm,nil,2,REASON_EFFECT)
 		
 		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
