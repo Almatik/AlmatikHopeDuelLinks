@@ -5,7 +5,7 @@ function s.initial_effect(c)
 	aux.DuelLinksTrigger(c,s.checkcon,s.checkop,1,EVENT_PREDRAW)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
+	e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 	e1:SetCountLimit(1,id,EFFECT_COUNT_CODE_DUEL)
 	e1:SetCondition(s.flipcon1)
 	e1:SetOperation(s.flipop1)
@@ -28,7 +28,7 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipcon1(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return Duel.GetFlagEffect(tp,id)==1
+	return Duel.GetFlagEffect(tp,id)>=0
 		and Duel.GetBattleDamage(tp)>=Duel.GetLP(tp)
 end
 function s.flipop1(e,tp,eg,ep,ev,re,r,rp)
