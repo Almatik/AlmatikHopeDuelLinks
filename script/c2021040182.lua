@@ -2,21 +2,7 @@
 Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
-	aux.DuelLinksTrigger(c,s.checkcon,s.checkop,1,EVENT_PREDRAW)
-	local e1=Effect.CreateEffect(c) 
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
-	e1:SetCondition(s.flipcon1)
-	e1:SetOperation(s.flipop1)
-	c:RegisterEffect(e1)
-end
-function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
-	--condition
-	return Duel.GetLP(tp)>=4000
-end
-function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	--random
-	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,0)
+	aux.DuelLinksTrigger(c,s.flipcon,s.flipop,1,EVENT_PRE_DAMAGE_CALCULATE)
 end
 function s.flipcon1(e,tp,eg,ep,ev,re,r,rp)
 	--condition
