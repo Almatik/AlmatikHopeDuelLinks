@@ -64,7 +64,7 @@ end
 -- Skill Ignition
 function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
-		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 		local tc=g:GetFirst()
 		local coverid=Duel.GetRandomNumber(7,62)+2021040100
 		for tc in aux.Next(g) do
