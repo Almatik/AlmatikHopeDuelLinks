@@ -91,7 +91,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 			--generate a cover for a card
 			tc:Cover(coverid)
 		end
-		local g=Duel.GetFieldGroup(tp,LOCATION_DECK+LOCATION_EXTRA,0)
+		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
 		for tc in aux.Next(g) do
 			code=tc:GetCode()
