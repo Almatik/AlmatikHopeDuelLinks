@@ -80,7 +80,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		Duel.DisableShuffleCheck(true)
 		Duel.SendtoDeck(c,tp,-2,REASON_RULE)
 		--generate a cover for a card
-		local coverid=math.random(0,62)+2021040100
+		local coverid=Duel.GetRandomNumber(0,62)+2021040100
 		Duel.Hint(HINT_SKILL_COVER,c:GetControler(),coverid)
 		--generate the skill in the "skill zone"
 		Duel.Hint(HINT_SKILL,c:GetControler(),c:GetCode())
