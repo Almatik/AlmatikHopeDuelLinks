@@ -67,7 +67,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
 		local tc=g:GetFirst()
 		local coverid=Duel.GetRandomNumber(7,62)+2021040100
-		for g do
+		for tc do
 			--generate a cover for a card
 			tc:Cover(coverid)
 			tc=g:GetNext()
