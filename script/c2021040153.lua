@@ -13,7 +13,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>0 then return end
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil
+		and Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
