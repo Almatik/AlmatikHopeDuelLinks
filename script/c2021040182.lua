@@ -20,7 +20,7 @@ function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipcon1(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return not Duel.GetBattleDamage(tp)<Duel.GetLP(tp)
+	return Duel.GetBattleDamage(tp)>=Duel.GetLP(tp)
 end
 function s.flipop1(e,tp,eg,ep,ev,re,r,rp)
 	--random
