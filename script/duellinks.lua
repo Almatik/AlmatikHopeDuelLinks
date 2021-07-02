@@ -94,7 +94,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
 		for tc in aux.Next(g) do
-			Duel.MoveSequence(tc,1)
+			Duel.MoveSequence(tc,0)
 		end
 		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
