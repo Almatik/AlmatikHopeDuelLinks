@@ -28,6 +28,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer()
 		and Duel.GetDrawCount(tp)==1 and Duel.GetFlagEffect(tp,id)>0
+		and not Duel.GetFlagEffect(tp,id+1)>0
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
