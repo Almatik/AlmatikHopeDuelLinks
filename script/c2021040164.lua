@@ -33,6 +33,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	--condition
 	return aux.CanActivateSkill(tp) and s[2+tp]>=1000
+		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--place this card to the field
@@ -43,7 +44,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if #g>0 and Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 then
-		local tc=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_HAND,0,1,1,nil)
+		local tc=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_HAND,0,1,1,nil):GetFirst()
 		Duel.SendtoHand(tc,tp,REASON_RULE)
 		Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
 		s[2+tp]=0
