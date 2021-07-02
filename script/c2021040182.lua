@@ -25,7 +25,6 @@ end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	--random
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,0)
-	Duel.Damage(tp,100,REASON_EFFECT)
 end
 function s.flipcon1(e,tp,eg,ep,ev,re,r,rp)
 	--condition
