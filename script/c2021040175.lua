@@ -5,9 +5,8 @@ function s.initial_effect(c)
 	--Activate
 	aux.DuelLinksPredraw(c,s.flipcon,s.flipop,1)
 	local e1=Effect.CreateEffect(c) 
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_BATTLE_DESTROYED)
+	e1:SetCode(EVENT_DESTROYED)
 	e1:SetCondition(s.checkcon)
 	e1:SetOperation(s.checkop)
 	c:RegisterEffect(e1)
@@ -29,12 +28,10 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer()
 		and Duel.GetDrawCount(tp)==1 and Duel.GetFlagEffect(tp,id)>0
-		and not Duel.GetFlagEffect(tp,id+1)>0
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
-	if not Duel.SelectYesNo(tp,aux.Stringid(id,0)) then return end
-	Duel.RegisterFlagEffect(tp,id+1,0,0,0)
+	if Duel.SelectYesNo(tp,aux.Stringid(id,0))==0 then return end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
 	Duel.Hint(HINT_CARD,tp,id)
 	--Draw
