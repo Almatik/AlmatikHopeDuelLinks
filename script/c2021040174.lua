@@ -25,7 +25,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
 	local ft=Duel.GetMatchingGroupCount(s.filter,tp,LOCATION_DECK,0,nil)
-	if ft>2 then local ft=2 end
+	if ft>2 then ft=2 end
 	local ct=Duel.DiscardHand(tp,Card.IsAbleToGrave,1,ft,REASON_EFFECT)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,ct,ct,nil)
 	if #g>0 then
