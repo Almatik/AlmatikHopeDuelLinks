@@ -32,7 +32,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return Duel.GetCurrentChain()==0 and tp==Duel.GetTurnPlayer()
 		and Duel.GetDrawCount(tp)>0 and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil)
-		and s[2+tp]>=1000
+		and s[2+tp]>=1500
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
