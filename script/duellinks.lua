@@ -94,10 +94,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		Duel.ShuffleDeck(tp)
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
-		for tc in aux.Next(g) do
-			--generate a cover for a card
-			Duel.MoveSequence(tc,1)
-		end
+		Duel.MoveSequence(tc,1)
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
 			Duel.Draw(p,1,REASON_RULE)
