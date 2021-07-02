@@ -27,7 +27,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--twice per duel check
 	if Duel.GetFlagEffect(ep,id)>1 then return end
 	local n=3
-	if Duel.GetFLagEffect(ep,id+1)>1 then local n=1 end
+	if Duel.GetFlagEffect(ep,id+1)>1 then local n=1 end
 	--condition
 	return aux.CanActivateSkill(tp)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_HAND,0,1,nil)
