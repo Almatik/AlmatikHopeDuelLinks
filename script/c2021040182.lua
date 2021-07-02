@@ -34,7 +34,7 @@ function s.flipop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,Duel.GetLP(tp)-1)
+	Duel.ChangeBattleDamage(tp,1)
 end
 
 function s.flipcon2(e,tp,eg,ev,ep,re,r,rp)
