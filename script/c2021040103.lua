@@ -3,7 +3,7 @@ Duel.LoadScript("duellinks.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
-	aux.DuelLinksCover(c)
+	aux.DuelLinksIgnition(c,s.flipcon,s.flipop,1)
 end
 function s.filter(c)
 	return c:IsAbleToDeck()

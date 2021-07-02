@@ -13,28 +13,6 @@ HINT_SKILL_REMOVE = 203
 -- skilltype: the type of the skill
 -- setcode: the EVENT code
 
-function Auxiliary.DuelLinksCover(c)
-	local e1=Effect.CreateEffect(c) 
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_STARTUP)
-	e1:SetRange(0x5f)
-	e1:SetOperation(Auxiliary.DLCover())
-	c:RegisterEffect(e1)
-end
-function Auxiliary.DLCover()
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
-		local tc=g:GetFirst()
-		local coverid=Duel.GetRandomNumber(7,62)+2021040100
-		while tc do
-			--generate a cover for a card
-			tc:Cover(coverid)
-			tc=g:GetNext()
-		end
-	end
-end
-
 function Auxiliary.DuelLinksStartUp(c,skillcon,skillop,countlimit)
 	local e1=Effect.CreateEffect(c) 
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -86,6 +64,14 @@ end
 -- Skill Ignition
 function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 	return function(e,tp,eg,ep,ev,re,r,rp)
+		local g=Duel.GetFieldGroup(tp,LOCATION_ALL,0)
+		local tc=g:GetFirst()
+		local coverid=Duel.GetRandomNumber(7,62)+2021040100
+		while tc do
+			--generate a cover for a card
+			tc:Cover(coverid)
+			tc=g:GetNext()
+		end
 		local c=e:GetHandler()
 		if skillop~=nil then
 			local e1=Effect.CreateEffect(c)
