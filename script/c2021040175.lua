@@ -11,7 +11,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.checkop)
 	c:RegisterEffect(e1)
 end
-function s.checkfilter(c)
+function s.checkfilter(c,tp)
 	return c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsLevelAbove(1)
 end
 function s.checkcon(e,tp,eg,ep,ev,re,r,rp)
