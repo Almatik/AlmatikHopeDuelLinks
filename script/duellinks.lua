@@ -93,8 +93,9 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		end
 		local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 		local tc=g:GetFirst()
-		Duel.MoveSequence(tc,1)
-		
+		for tc in aux.Next(g) do
+			Duel.MoveSequence(tc,1)
+		end
 		Duel.ShuffleDeck(tp)
 		--send to limbo then draw 1 if the skill was in the hand
 		if e:GetHandler():IsPreviousLocation(LOCATION_HAND) then 
@@ -102,3 +103,7 @@ function Auxiliary.DLSkillOp(skillcon,skillop,countlimit,setcode)
 		end
 	end
 end
+
+		--Duel.Remove(g,POS_FACEDOWN,REASON_RULE)
+		--local rm=Duel.GetFieldGroup(tp,LOCATION_REMOVED,0)
+		--Duel.SendtoDeck(rm,nil,2,REASON_EFFECT)
